@@ -1,0 +1,14 @@
+E:\projects\DialogEditor\DialogEditor\DialogEditor\bin\Debug\net7.0-windows\DialogEditor.exe
+E:\projects\DialogEditor\DialogEditor\DialogEditor\bin\Debug\net7.0-windows\DialogEditor.deps.json
+E:\projects\DialogEditor\DialogEditor\DialogEditor\bin\Debug\net7.0-windows\DialogEditor.runtimeconfig.json
+E:\projects\DialogEditor\DialogEditor\DialogEditor\bin\Debug\net7.0-windows\DialogEditor.dll
+E:\projects\DialogEditor\DialogEditor\DialogEditor\bin\Debug\net7.0-windows\DialogEditor.pdb
+E:\projects\DialogEditor\DialogEditor\DialogEditor\obj\Debug\net7.0-windows\DialogEditor.GeneratedMSBuildEditorConfig.editorconfig
+E:\projects\DialogEditor\DialogEditor\DialogEditor\obj\Debug\net7.0-windows\DialogEditor.AssemblyInfoInputs.cache
+E:\projects\DialogEditor\DialogEditor\DialogEditor\obj\Debug\net7.0-windows\DialogEditor.AssemblyInfo.cs
+E:\projects\DialogEditor\DialogEditor\DialogEditor\obj\Debug\net7.0-windows\DialogEditor.csproj.CoreCompileInputs.cache
+E:\projects\DialogEditor\DialogEditor\DialogEditor\obj\Debug\net7.0-windows\DialogEditor.dll
+E:\projects\DialogEditor\DialogEditor\DialogEditor\obj\Debug\net7.0-windows\refint\DialogEditor.dll
+E:\projects\DialogEditor\DialogEditor\DialogEditor\obj\Debug\net7.0-windows\DialogEditor.pdb
+E:\projects\DialogEditor\DialogEditor\DialogEditor\obj\Debug\net7.0-windows\DialogEditor.genruntimeconfig.cache
+E:\projects\DialogEditor\DialogEditor\DialogEditor\obj\Debug\net7.0-windows\ref\DialogEditor.dll
