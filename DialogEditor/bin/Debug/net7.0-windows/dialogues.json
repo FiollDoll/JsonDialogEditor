@@ -1,0 +1,18 @@
+{
+  "Dialogs": [
+    {
+      "NameDialog": "meetWithMonica",
+      "Read": false,
+      "StyleOfDialog": 0,
+      "StepBranches": [],
+      "BigPicturesPresets": [],
+      "MoreRead": false,
+      "CanMove": false,
+      "CanInter": false,
+      "MainPanelStartDelay": 0,
+      "FastChangesName": null,
+      "DarkAfterEnd": false,
+      "ActivateCutsceneStepAfterEnd": -1
+    }
+  ]
+}

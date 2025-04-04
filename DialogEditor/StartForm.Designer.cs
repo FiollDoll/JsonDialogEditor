@@ -44,6 +44,7 @@ partial class StartForm
         buttonCreate.TabIndex = 0;
         buttonCreate.Text = "Создать";
         buttonCreate.UseVisualStyleBackColor = true;
+        buttonCreate.Click += buttonCreate_Click_1;
         // 
         // buttonLoad
         // 
