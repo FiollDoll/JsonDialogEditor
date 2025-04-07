@@ -12,3 +12,5 @@ E:\projects\DialogEditor\DialogEditor\DialogEditor\obj\Debug\net7.0-windows\refi
 E:\projects\DialogEditor\DialogEditor\DialogEditor\obj\Debug\net7.0-windows\DialogEditor.pdb
 E:\projects\DialogEditor\DialogEditor\DialogEditor\obj\Debug\net7.0-windows\DialogEditor.genruntimeconfig.cache
 E:\projects\DialogEditor\DialogEditor\DialogEditor\obj\Debug\net7.0-windows\ref\DialogEditor.dll
+E:\projects\DialogEditor\DialogEditor\DialogEditor\obj\Debug\net7.0-windows\DialogEditor.EditorForm.resources
+E:\projects\DialogEditor\DialogEditor\DialogEditor\obj\Debug\net7.0-windows\DialogEditor.csproj.GenerateResource.cache

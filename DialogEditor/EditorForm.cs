@@ -5,18 +5,25 @@ namespace DialogEditor
     public partial class EditorForm : Form
     {
         private Dialog _selectedDialog;
+        private StepBranch _selectedBranch;
+        private DialogStep _selectedStep;
         public string LoadedDialog;
         public bool NewDialog;
 
         public EditorForm()
         {
             InitializeComponent();
+            pagePreference.Visible = false;
+            pageSteps.Visible = false;
         }
 
         public void LoadOrCreateDialog()
         {
             if (NewDialog)
+            {
                 _selectedDialog = new Dialog(LoadedDialog);
+                _selectedDialog.StepBranches.Add(new StepBranch("Main"));
+            }
             else
             {
                 using (var fs = new FileStream("dialogues.json", FileMode.Open))
@@ -38,7 +45,7 @@ namespace DialogEditor
             AutoFill();
         }
 
-        public void AutoFill()
+        private void AutoFill()
         {
             labelDialog.Text = _selectedDialog.NameDialog;
             // Стили
@@ -93,6 +100,87 @@ namespace DialogEditor
         private void dialogStyles_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedDialog.StyleOfDialog = (Dialog.DialogStyle)dialogStyles.SelectedIndex;
+        }
+
+        private void buttonPageFirst_Click(object sender, EventArgs e)
+        {
+            pagePreference.Visible = true;
+            pageSteps.Visible = false;
+            checkCanMove.Checked = _selectedDialog.CanMove;
+            checkCanInter.Checked = _selectedDialog.CanInter;
+            checkMoreRead.Checked = _selectedDialog.MoreRead;
+        }
+
+        private void buttonPageDialog_Click(object sender, EventArgs e)
+        {
+            pagePreference.Visible = false;
+            pageSteps.Visible = true;
+            _selectedBranch = _selectedDialog.StepBranches[0];
+            comboBoxSelectedBranch.Text = _selectedBranch.BranchName;
+            UpdateBranchesUi();
+            UpdateStepsUi();
+        }
+
+        private void UpdateBranchesUi()
+        {
+            comboBoxSelectedBranch.Items.Clear();
+            foreach (StepBranch branch in _selectedDialog.StepBranches)
+                comboBoxSelectedBranch.Items.Add(branch.BranchName);
+        }
+
+        private void UpdateStepsUi()
+        {
+            comboBoxSelectedStep.Items.Clear();
+            foreach (DialogStep step in _selectedBranch.DialogSteps)
+                comboBoxSelectedStep.Items.Add(step.StepName);
+        }
+
+        private void buttonAddBranch_Click(object sender, EventArgs e)
+        {
+            if (!comboBoxSelectedBranch.Items.Contains(_selectedDialog.GetBranchByName(comboBoxSelectedBranch.Text)))
+            {
+                _selectedDialog.StepBranches.Add(new StepBranch(comboBoxSelectedBranch.Text));
+                UpdateBranchesUi();
+                UpdateStepsUi();
+            }
+        }
+
+        private void buttonAddStep_Click(object sender, EventArgs e)
+        {
+            _selectedStep = new DialogStep(comboBoxSelectedStep.Items.Count.ToString());
+            _selectedStep.DialogText = new LanguageSetting();
+            _selectedBranch.DialogSteps.Add(_selectedStep);
+            UpdateStepsUi();
+        }
+
+        private void comboBoxSelectedBranch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _selectedBranch = _selectedDialog.GetBranchByName(comboBoxSelectedBranch.Text);
+        }
+
+
+        private void checkCanMove_CheckedChanged(object sender, EventArgs e) =>
+            _selectedDialog.CanMove = checkCanMove.Checked;
+
+        private void checkCanInter_CheckedChanged(object sender, EventArgs e) =>
+            _selectedDialog.CanInter = checkCanInter.Checked;
+
+        private void checkMoreRead_CheckedChanged(object sender, EventArgs e) =>
+            _selectedDialog.MoreRead = checkMoreRead.Checked;
+
+        private void comboBoxSelectedStep_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Для изменяемой ссылки
+            _selectedStep = _selectedBranch.GetDialogStepByName(comboBoxSelectedStep.Text);
+            textBoxNpcName.Text = _selectedStep.TotalNpcName;
+            textBoxRu.Text = _selectedStep.DialogText.ru;
+            textBoxEn.Text = _selectedStep.DialogText.en;
+        }
+
+        private void buttonSaveDialog_Click(object sender, EventArgs e)
+        {
+            _selectedStep.TotalNpcName = textBoxNpcName.Text;
+            _selectedStep.DialogText = new LanguageSetting(textBoxRu.Text, textBoxEn.Text);
         }
     }
 }

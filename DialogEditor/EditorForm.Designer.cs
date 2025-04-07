@@ -36,6 +36,31 @@ partial class EditorForm
         ButtonSave = new System.Windows.Forms.Button();
         label1 = new System.Windows.Forms.Label();
         dialogStyles = new System.Windows.Forms.ComboBox();
+        pagePreference = new System.Windows.Forms.GroupBox();
+        checkMoreRead = new System.Windows.Forms.CheckBox();
+        checkCanInter = new System.Windows.Forms.CheckBox();
+        checkCanMove = new System.Windows.Forms.CheckBox();
+        pageSteps = new System.Windows.Forms.GroupBox();
+        dialogStepManage = new System.Windows.Forms.GroupBox();
+        buttonSaveDialog = new System.Windows.Forms.Button();
+        label6 = new System.Windows.Forms.Label();
+        label5 = new System.Windows.Forms.Label();
+        textBoxEn = new System.Windows.Forms.TextBox();
+        textBoxRu = new System.Windows.Forms.TextBox();
+        label4 = new System.Windows.Forms.Label();
+        label3 = new System.Windows.Forms.Label();
+        textBoxNpcName = new System.Windows.Forms.TextBox();
+        label2 = new System.Windows.Forms.Label();
+        Label = new System.Windows.Forms.Label();
+        buttonAddStep = new System.Windows.Forms.Button();
+        comboBoxSelectedStep = new System.Windows.Forms.ComboBox();
+        buttonAddBranch = new System.Windows.Forms.Button();
+        comboBoxSelectedBranch = new System.Windows.Forms.ComboBox();
+        buttonPageFirst = new System.Windows.Forms.Button();
+        buttonPageDialog = new System.Windows.Forms.Button();
+        pagePreference.SuspendLayout();
+        pageSteps.SuspendLayout();
+        dialogStepManage.SuspendLayout();
         SuspendLayout();
         // 
         // buttonExit
@@ -53,12 +78,12 @@ partial class EditorForm
         labelDialog.Name = "labelDialog";
         labelDialog.Size = new System.Drawing.Size(285, 40);
         labelDialog.TabIndex = 1;
-        labelDialog.Text = "НазваниеДиалога";
+        labelDialog.Text = "DialogName";
         labelDialog.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
         // 
         // ButtonSave
         // 
-        ButtonSave.Location = new System.Drawing.Point(641, 398);
+        ButtonSave.Location = new System.Drawing.Point(641, 401);
         ButtonSave.Name = "ButtonSave";
         ButtonSave.Size = new System.Drawing.Size(147, 40);
         ButtonSave.TabIndex = 2;
@@ -68,7 +93,7 @@ partial class EditorForm
         // 
         // label1
         // 
-        label1.Location = new System.Drawing.Point(70, 54);
+        label1.Location = new System.Drawing.Point(44, 57);
         label1.Name = "label1";
         label1.Size = new System.Drawing.Size(106, 25);
         label1.TabIndex = 4;
@@ -78,25 +103,285 @@ partial class EditorForm
         // dialogStyles
         // 
         dialogStyles.FormattingEnabled = true;
-        dialogStyles.Location = new System.Drawing.Point(182, 56);
+        dialogStyles.Location = new System.Drawing.Point(156, 59);
         dialogStyles.Name = "dialogStyles";
         dialogStyles.Size = new System.Drawing.Size(121, 23);
         dialogStyles.TabIndex = 5;
         dialogStyles.SelectedIndexChanged += dialogStyles_SelectedIndexChanged;
         // 
+        // pagePreference
+        // 
+        pagePreference.Controls.Add(checkMoreRead);
+        pagePreference.Controls.Add(checkCanInter);
+        pagePreference.Controls.Add(checkCanMove);
+        pagePreference.Location = new System.Drawing.Point(65, 85);
+        pagePreference.Name = "pagePreference";
+        pagePreference.Size = new System.Drawing.Size(697, 306);
+        pagePreference.TabIndex = 6;
+        pagePreference.TabStop = false;
+        pagePreference.Visible = false;
+        // 
+        // checkMoreRead
+        // 
+        checkMoreRead.Location = new System.Drawing.Point(17, 85);
+        checkMoreRead.Name = "checkMoreRead";
+        checkMoreRead.Size = new System.Drawing.Size(361, 24);
+        checkMoreRead.TabIndex = 0;
+        checkMoreRead.Text = "Читать несколько раз";
+        checkMoreRead.UseVisualStyleBackColor = true;
+        checkMoreRead.CheckedChanged += checkMoreRead_CheckedChanged;
+        // 
+        // checkCanInter
+        // 
+        checkCanInter.Location = new System.Drawing.Point(17, 55);
+        checkCanInter.Name = "checkCanInter";
+        checkCanInter.Size = new System.Drawing.Size(361, 24);
+        checkCanInter.TabIndex = 0;
+        checkCanInter.Text = "Можно взаимодействовать";
+        checkCanInter.UseVisualStyleBackColor = true;
+        checkCanInter.CheckedChanged += checkCanInter_CheckedChanged;
+        // 
+        // checkCanMove
+        // 
+        checkCanMove.Location = new System.Drawing.Point(17, 25);
+        checkCanMove.Name = "checkCanMove";
+        checkCanMove.Size = new System.Drawing.Size(361, 24);
+        checkCanMove.TabIndex = 0;
+        checkCanMove.Text = "Можно двигаться";
+        checkCanMove.UseVisualStyleBackColor = true;
+        checkCanMove.CheckedChanged += checkCanMove_CheckedChanged;
+        // 
+        // pageSteps
+        // 
+        pageSteps.Controls.Add(dialogStepManage);
+        pageSteps.Controls.Add(label2);
+        pageSteps.Controls.Add(Label);
+        pageSteps.Controls.Add(buttonAddStep);
+        pageSteps.Controls.Add(comboBoxSelectedStep);
+        pageSteps.Controls.Add(buttonAddBranch);
+        pageSteps.Controls.Add(comboBoxSelectedBranch);
+        pageSteps.Location = new System.Drawing.Point(65, 85);
+        pageSteps.Name = "pageSteps";
+        pageSteps.Size = new System.Drawing.Size(697, 306);
+        pageSteps.TabIndex = 7;
+        pageSteps.TabStop = false;
+        // 
+        // dialogStepManage
+        // 
+        dialogStepManage.Controls.Add(buttonSaveDialog);
+        dialogStepManage.Controls.Add(label6);
+        dialogStepManage.Controls.Add(label5);
+        dialogStepManage.Controls.Add(textBoxEn);
+        dialogStepManage.Controls.Add(textBoxRu);
+        dialogStepManage.Controls.Add(label4);
+        dialogStepManage.Controls.Add(label3);
+        dialogStepManage.Controls.Add(textBoxNpcName);
+        dialogStepManage.Location = new System.Drawing.Point(10, 67);
+        dialogStepManage.Name = "dialogStepManage";
+        dialogStepManage.Size = new System.Drawing.Size(669, 238);
+        dialogStepManage.TabIndex = 6;
+        dialogStepManage.TabStop = false;
+        // 
+        // buttonSaveDialog
+        // 
+        buttonSaveDialog.Location = new System.Drawing.Point(552, 206);
+        buttonSaveDialog.Name = "buttonSaveDialog";
+        buttonSaveDialog.Size = new System.Drawing.Size(100, 26);
+        buttonSaveDialog.TabIndex = 6;
+        buttonSaveDialog.Text = "Сохранить диалог";
+        buttonSaveDialog.UseVisualStyleBackColor = true;
+        buttonSaveDialog.Click += buttonSaveDialog_Click;
+        // 
+        // label6
+        // 
+        label6.Location = new System.Drawing.Point(455, 53);
+        label6.Name = "label6";
+        label6.Size = new System.Drawing.Size(31, 21);
+        label6.TabIndex = 5;
+        label6.Text = "En";
+        // 
+        // label5
+        // 
+        label5.Location = new System.Drawing.Point(168, 53);
+        label5.Name = "label5";
+        label5.Size = new System.Drawing.Size(31, 21);
+        label5.TabIndex = 4;
+        label5.Text = "Ru";
+        // 
+        // textBoxEn
+        // 
+        textBoxEn.Location = new System.Drawing.Point(360, 77);
+        textBoxEn.Multiline = true;
+        textBoxEn.Name = "textBoxEn";
+        textBoxEn.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+        textBoxEn.ShortcutsEnabled = false;
+        textBoxEn.Size = new System.Drawing.Size(227, 114);
+        textBoxEn.TabIndex = 3;
+        // 
+        // textBoxRu
+        // 
+        textBoxRu.Location = new System.Drawing.Point(81, 77);
+        textBoxRu.Multiline = true;
+        textBoxRu.Name = "textBoxRu";
+        textBoxRu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+        textBoxRu.ShortcutsEnabled = false;
+        textBoxRu.Size = new System.Drawing.Size(227, 114);
+        textBoxRu.TabIndex = 2;
+        // 
+        // label4
+        // 
+        label4.Location = new System.Drawing.Point(-31, 23);
+        label4.Name = "label4";
+        label4.Size = new System.Drawing.Size(106, 22);
+        label4.TabIndex = 1;
+        label4.Text = "Npc name";
+        label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        // 
+        // label3
+        // 
+        label3.Location = new System.Drawing.Point(-31, 22);
+        label3.Name = "label3";
+        label3.Size = new System.Drawing.Size(106, 22);
+        label3.TabIndex = 1;
+        label3.Text = "Npc name";
+        label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        // 
+        // textBoxNpcName
+        // 
+        textBoxNpcName.Location = new System.Drawing.Point(81, 22);
+        textBoxNpcName.Name = "textBoxNpcName";
+        textBoxNpcName.Size = new System.Drawing.Size(147, 23);
+        textBoxNpcName.TabIndex = 0;
+        // 
+        // label2
+        // 
+        label2.Location = new System.Drawing.Point(536, 19);
+        label2.Name = "label2";
+        label2.Size = new System.Drawing.Size(113, 14);
+        label2.TabIndex = 5;
+        label2.Text = "Шаг диалога";
+        // 
+        // Label
+        // 
+        Label.Location = new System.Drawing.Point(10, 19);
+        Label.Name = "Label";
+        Label.Size = new System.Drawing.Size(116, 18);
+        Label.TabIndex = 4;
+        Label.Text = "Ветки";
+        // 
+        // buttonAddStep
+        // 
+        buttonAddStep.Location = new System.Drawing.Point(655, 34);
+        buttonAddStep.Name = "buttonAddStep";
+        buttonAddStep.Size = new System.Drawing.Size(25, 24);
+        buttonAddStep.TabIndex = 3;
+        buttonAddStep.Text = "+";
+        buttonAddStep.UseVisualStyleBackColor = true;
+        buttonAddStep.Click += buttonAddStep_Click;
+        // 
+        // comboBoxSelectedStep
+        // 
+        comboBoxSelectedStep.FormattingEnabled = true;
+        comboBoxSelectedStep.Location = new System.Drawing.Point(536, 36);
+        comboBoxSelectedStep.Name = "comboBoxSelectedStep";
+        comboBoxSelectedStep.Size = new System.Drawing.Size(113, 23);
+        comboBoxSelectedStep.TabIndex = 2;
+        comboBoxSelectedStep.SelectedIndexChanged += comboBoxSelectedStep_SelectedIndexChanged;
+        // 
+        // buttonAddBranch
+        // 
+        buttonAddBranch.Location = new System.Drawing.Point(129, 36);
+        buttonAddBranch.Name = "buttonAddBranch";
+        buttonAddBranch.Size = new System.Drawing.Size(25, 24);
+        buttonAddBranch.TabIndex = 1;
+        buttonAddBranch.Text = "+";
+        buttonAddBranch.UseVisualStyleBackColor = true;
+        buttonAddBranch.Click += buttonAddBranch_Click;
+        // 
+        // comboBoxSelectedBranch
+        // 
+        comboBoxSelectedBranch.FormattingEnabled = true;
+        comboBoxSelectedBranch.Location = new System.Drawing.Point(10, 38);
+        comboBoxSelectedBranch.Name = "comboBoxSelectedBranch";
+        comboBoxSelectedBranch.Size = new System.Drawing.Size(113, 23);
+        comboBoxSelectedBranch.TabIndex = 1;
+        comboBoxSelectedBranch.SelectedIndexChanged += comboBoxSelectedBranch_SelectedIndexChanged;
+        // 
+        // buttonPageFirst
+        // 
+        buttonPageFirst.Location = new System.Drawing.Point(63, 413);
+        buttonPageFirst.Name = "buttonPageFirst";
+        buttonPageFirst.Size = new System.Drawing.Size(128, 28);
+        buttonPageFirst.TabIndex = 7;
+        buttonPageFirst.Text = "Настройки диалога";
+        buttonPageFirst.UseVisualStyleBackColor = true;
+        buttonPageFirst.Click += buttonPageFirst_Click;
+        // 
+        // buttonPageDialog
+        // 
+        buttonPageDialog.Location = new System.Drawing.Point(194, 413);
+        buttonPageDialog.Name = "buttonPageDialog";
+        buttonPageDialog.Size = new System.Drawing.Size(125, 28);
+        buttonPageDialog.TabIndex = 8;
+        buttonPageDialog.Text = "Ветки диалога";
+        buttonPageDialog.UseVisualStyleBackColor = true;
+        buttonPageDialog.Click += buttonPageDialog_Click;
+        // 
         // EditorForm
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        BackColor = System.Drawing.SystemColors.Control;
         ClientSize = new System.Drawing.Size(800, 450);
+        Controls.Add(buttonPageDialog);
+        Controls.Add(buttonPageFirst);
         Controls.Add(dialogStyles);
         Controls.Add(label1);
         Controls.Add(ButtonSave);
         Controls.Add(labelDialog);
         Controls.Add(buttonExit);
+        Controls.Add(pageSteps);
+        Controls.Add(pagePreference);
+        Location = new System.Drawing.Point(15, 15);
         Text = "EditorForm";
+        pagePreference.ResumeLayout(false);
+        pageSteps.ResumeLayout(false);
+        dialogStepManage.ResumeLayout(false);
+        dialogStepManage.PerformLayout();
         ResumeLayout(false);
     }
+
+    private System.Windows.Forms.Button buttonSaveDialog;
+
+    private System.Windows.Forms.TextBox textBoxEn;
+    private System.Windows.Forms.Label label5;
+    private System.Windows.Forms.Label label6;
+
+    private System.Windows.Forms.Label label4;
+    private System.Windows.Forms.TextBox textBoxRu;
+
+    private System.Windows.Forms.TextBox textBoxNpcName;
+    private System.Windows.Forms.Label label3;
+
+    private System.Windows.Forms.GroupBox dialogStepManage;
+
+    private System.Windows.Forms.ComboBox comboBoxSelectedBranch;
+    private System.Windows.Forms.Button buttonAddBranch;
+    private System.Windows.Forms.ComboBox comboBoxSelectedStep;
+    private System.Windows.Forms.Button buttonAddStep;
+    private System.Windows.Forms.Label Label;
+    private System.Windows.Forms.Label label2;
+
+    private System.Windows.Forms.Button buttonPageFirst;
+    private System.Windows.Forms.GroupBox pageSteps;
+
+    private System.Windows.Forms.CheckBox checkCanInter;
+    private System.Windows.Forms.Button buttonPageDialog;
+
+    private System.Windows.Forms.CheckBox checkCanMove;
+    private System.Windows.Forms.CheckBox checkMoreRead;
+
+    private System.Windows.Forms.GroupBox pagePreference;
 
     private System.Windows.Forms.ComboBox dialogStyles;
 
