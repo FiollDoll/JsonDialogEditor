@@ -12,9 +12,10 @@
               "StepName": "0",
               "TotalNpcName": "Monica",
               "DialogText": {
-                "ru": "123",
+                "ru": "\u041F\u0440\u0438\u0432\u0435\u0442, \u041C\u0430\u0440\u043A!",
                 "en": "321"
               },
+              "IconMoodSelected": 1,
               "BigPictureName": null,
               "CursedText": false,
               "DelayAfterNext": 0,
@@ -28,6 +29,7 @@
                 "ru": "21",
                 "en": "23"
               },
+              "IconMoodSelected": 0,
               "BigPictureName": null,
               "CursedText": false,
               "DelayAfterNext": 0,
@@ -62,6 +64,7 @@
                 "ru": "\u0410\u0431\u043E\u0431\u0430",
                 "en": "Aaaa"
               },
+              "IconMoodSelected": 0,
               "BigPictureName": null,
               "CursedText": false,
               "DelayAfterNext": 0,
@@ -96,6 +99,7 @@
                 "ru": "\u0423\u0440\u0430... \u0424\u0443\u0442\u0431\u043E\u043B...",
                 "en": "Yey..."
               },
+              "IconMoodSelected": 0,
               "BigPictureName": null,
               "CursedText": false,
               "DelayAfterNext": 0,
@@ -106,9 +110,10 @@
               "StepName": "1",
               "TotalNpcName": "Mark",
               "DialogText": {
-                "ru": "\u041A\u0430\u043A \u0436\u0435 \u044F \u0443\u0441\u0442\u0430\u043B....",
+                "ru": "\u041E\u0431\u043E\u0436\u0430\u044E \u0444\u0443\u0442\u0431\u043E\u043B!",
                 "en": "I m tired...."
               },
+              "IconMoodSelected": 1,
               "BigPictureName": null,
               "CursedText": false,
               "DelayAfterNext": 0,
@@ -117,11 +122,12 @@
             },
             {
               "StepName": "2",
-              "TotalNpcName": "",
+              "TotalNpcName": "nothing",
               "DialogText": {
                 "ru": "\u0413\u041E\u041E\u041E\u041E\u041E\u041E\u041E\u041E\u041E\u041E\u041B!!!!",
                 "en": ""
               },
+              "IconMoodSelected": 0,
               "BigPictureName": null,
               "CursedText": false,
               "DelayAfterNext": 0,

@@ -83,6 +83,7 @@ public class DialogStep
     public string StepName { get; set; }
     public string TotalNpcName { get; set; }
     public LanguageSetting DialogText { get; set; }
+    public IconMood IconMoodSelected { get; set; }
     public string BigPictureName { get; set; }
     public bool CursedText { get; set; }
     public float DelayAfterNext { get; set; }
@@ -129,4 +130,16 @@ public class LanguageSetting
         ru = russianText;
         en = englishText;
     }
+}
+
+public enum IconMood
+{
+    Standart,
+    Happy,
+    Angry,
+    Sad,
+    Scary,
+    Wonder, // Непонимание
+    Confusion, // Удивление
+    Curse
 }

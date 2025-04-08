@@ -29,6 +29,8 @@ namespace DialogEditor
             InitializeComponent();
             pagePreference.Visible = false;
             pageSteps.Visible = false;
+            for (int i = 0; i < 6; i++)
+                comboBoxMood.Items.Add(((IconMood)i).ToString());
         }
 
         /// <summary>
@@ -113,7 +115,10 @@ namespace DialogEditor
         private void buttonSaveDialog_Click(object sender, EventArgs e)
         {
             _selectedStep.TotalNpcName = textBoxNpcName.Text;
+            if (_selectedStep.TotalNpcName == "")
+                _selectedStep.TotalNpcName = "nothing";
             _selectedStep.DialogText = new LanguageSetting(textBoxRu.Text, textBoxEn.Text);
+            _selectedStep.IconMoodSelected = (IconMood)comboBoxMood.SelectedIndex;
         }
 
         #region Brahcnes
@@ -180,6 +185,9 @@ namespace DialogEditor
 
         private void checkMoreRead_CheckedChanged(object sender, EventArgs e) =>
             _selectedDialog.MoreRead = checkMoreRead.Checked;
+
+        private void checkBoxCursedText_CheckedChanged(object sender, EventArgs e) =>
+            _selectedStep.CursedText = checkBoxCursedText.Checked;
 
         /// <summary>
         /// Меняем стиль диалога
@@ -264,6 +272,9 @@ namespace DialogEditor
         {
             comboBoxSelectedStep.Text = _selectedStep.StepName;
             textBoxNpcName.Text = _selectedStep.TotalNpcName;
+            if (textBoxNpcName.Text == "nothing")
+                textBoxNpcName.Text = "";
+            comboBoxMood.Text = _selectedStep.IconMoodSelected.ToString();
             textBoxRu.Text = _selectedStep.DialogText.ru;
             textBoxEn.Text = _selectedStep.DialogText.en;
             dialogStepManage.Visible = true;

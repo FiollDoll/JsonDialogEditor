@@ -44,8 +44,8 @@ partial class EditorForm
         buttonDialogStepPref = new System.Windows.Forms.Button();
         buttonDialogStep = new System.Windows.Forms.Button();
         dialogStepManage = new System.Windows.Forms.GroupBox();
-        dialogStepPreference = new System.Windows.Forms.GroupBox();
-        checkBoxCursedText = new System.Windows.Forms.CheckBox();
+        comboBoxMood = new System.Windows.Forms.ComboBox();
+        label3 = new System.Windows.Forms.Label();
         label6 = new System.Windows.Forms.Label();
         label5 = new System.Windows.Forms.Label();
         textBoxEn = new System.Windows.Forms.TextBox();
@@ -59,6 +59,8 @@ partial class EditorForm
         comboBoxSelectedStep = new System.Windows.Forms.ComboBox();
         buttonAddBranch = new System.Windows.Forms.Button();
         comboBoxSelectedBranch = new System.Windows.Forms.ComboBox();
+        dialogStepPreference = new System.Windows.Forms.GroupBox();
+        checkBoxCursedText = new System.Windows.Forms.CheckBox();
         buttonPageFirst = new System.Windows.Forms.Button();
         buttonPageDialog = new System.Windows.Forms.Button();
         pagePreference.SuspendLayout();
@@ -157,10 +159,8 @@ partial class EditorForm
         // 
         // pageSteps
         // 
-        pageSteps.Controls.Add(dialogStepPreference);
         pageSteps.Controls.Add(buttonDialogStepPref);
         pageSteps.Controls.Add(buttonDialogStep);
-        pageSteps.Controls.Add(dialogStepManage);
         pageSteps.Controls.Add(buttonSaveDialog);
         pageSteps.Controls.Add(label2);
         pageSteps.Controls.Add(Label);
@@ -168,6 +168,8 @@ partial class EditorForm
         pageSteps.Controls.Add(comboBoxSelectedStep);
         pageSteps.Controls.Add(buttonAddBranch);
         pageSteps.Controls.Add(comboBoxSelectedBranch);
+        pageSteps.Controls.Add(dialogStepPreference);
+        pageSteps.Controls.Add(dialogStepManage);
         pageSteps.Location = new System.Drawing.Point(65, 85);
         pageSteps.Name = "pageSteps";
         pageSteps.Size = new System.Drawing.Size(697, 306);
@@ -196,6 +198,8 @@ partial class EditorForm
         // 
         // dialogStepManage
         // 
+        dialogStepManage.Controls.Add(comboBoxMood);
+        dialogStepManage.Controls.Add(label3);
         dialogStepManage.Controls.Add(label6);
         dialogStepManage.Controls.Add(label5);
         dialogStepManage.Controls.Add(textBoxEn);
@@ -208,23 +212,22 @@ partial class EditorForm
         dialogStepManage.TabIndex = 6;
         dialogStepManage.TabStop = false;
         // 
-        // dialogStepPreference
+        // comboBoxMood
         // 
-        dialogStepPreference.Controls.Add(checkBoxCursedText);
-        dialogStepPreference.Location = new System.Drawing.Point(10, 67);
-        dialogStepPreference.Name = "dialogStepPreference";
-        dialogStepPreference.Size = new System.Drawing.Size(670, 203);
-        dialogStepPreference.TabIndex = 6;
-        dialogStepPreference.TabStop = false;
+        comboBoxMood.FormattingEnabled = true;
+        comboBoxMood.Location = new System.Drawing.Point(423, 21);
+        comboBoxMood.Name = "comboBoxMood";
+        comboBoxMood.Size = new System.Drawing.Size(144, 23);
+        comboBoxMood.TabIndex = 8;
         // 
-        // checkBoxCursedText
+        // label3
         // 
-        checkBoxCursedText.Location = new System.Drawing.Point(18, 19);
-        checkBoxCursedText.Name = "checkBoxCursedText";
-        checkBoxCursedText.Size = new System.Drawing.Size(164, 19);
-        checkBoxCursedText.TabIndex = 0;
-        checkBoxCursedText.Text = "Сломанный текст";
-        checkBoxCursedText.UseVisualStyleBackColor = true;
+        label3.Location = new System.Drawing.Point(349, 20);
+        label3.Name = "label3";
+        label3.Size = new System.Drawing.Size(68, 22);
+        label3.TabIndex = 7;
+        label3.Text = "Mood";
+        label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
         // 
         // label6
         // 
@@ -342,6 +345,25 @@ partial class EditorForm
         comboBoxSelectedBranch.TabIndex = 1;
         comboBoxSelectedBranch.SelectedIndexChanged += comboBoxSelectedBranch_SelectedIndexChanged;
         // 
+        // dialogStepPreference
+        // 
+        dialogStepPreference.Controls.Add(checkBoxCursedText);
+        dialogStepPreference.Location = new System.Drawing.Point(10, 67);
+        dialogStepPreference.Name = "dialogStepPreference";
+        dialogStepPreference.Size = new System.Drawing.Size(670, 203);
+        dialogStepPreference.TabIndex = 6;
+        dialogStepPreference.TabStop = false;
+        // 
+        // checkBoxCursedText
+        // 
+        checkBoxCursedText.Location = new System.Drawing.Point(18, 19);
+        checkBoxCursedText.Name = "checkBoxCursedText";
+        checkBoxCursedText.Size = new System.Drawing.Size(164, 19);
+        checkBoxCursedText.TabIndex = 0;
+        checkBoxCursedText.Text = "Сломанный текст";
+        checkBoxCursedText.UseVisualStyleBackColor = true;
+        checkBoxCursedText.CheckedChanged += checkBoxCursedText_CheckedChanged;
+        // 
         // buttonPageFirst
         // 
         buttonPageFirst.Location = new System.Drawing.Point(63, 413);
@@ -386,6 +408,9 @@ partial class EditorForm
         dialogStepPreference.ResumeLayout(false);
         ResumeLayout(false);
     }
+
+    private System.Windows.Forms.Label label3;
+    private System.Windows.Forms.ComboBox comboBoxMood;
 
     private System.Windows.Forms.CheckBox checkBoxCursedText;
     private System.Windows.Forms.Button buttonDialogStep;
