@@ -7,6 +7,7 @@ public partial class StartForm : Form
     public StartForm()
     {
         InitializeComponent();
+        // Вставляем все существующие диалоги
         using (var fs = new FileStream("dialogues.json", FileMode.Open))
         {
             DialogCollection dialogCollection = JsonSerializer.Deserialize<DialogCollection>(fs);
@@ -14,9 +15,10 @@ public partial class StartForm : Form
                 comboBox1.Items.Add(dialog.NameDialog);
         }
     }
-
+    
     private void buttonLoad_Click(object sender, EventArgs e)
     {
+        // Выбираем какой-либо из текстов
         string dialogName = "";
         
         if (textBox1.Text != "")

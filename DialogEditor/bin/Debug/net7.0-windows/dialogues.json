@@ -80,6 +80,66 @@
       "FastChangesName": null,
       "DarkAfterEnd": false,
       "ActivateCutsceneStepAfterEnd": -1
+    },
+    {
+      "NameDialog": "tv",
+      "Read": false,
+      "StyleOfDialog": 0,
+      "StepBranches": [
+        {
+          "BranchName": "Main",
+          "DialogSteps": [
+            {
+              "StepName": "0",
+              "TotalNpcName": "Mark",
+              "DialogText": {
+                "ru": "\u0423\u0440\u0430... \u0424\u0443\u0442\u0431\u043E\u043B...",
+                "en": "Yey..."
+              },
+              "BigPictureName": null,
+              "CursedText": false,
+              "DelayAfterNext": 0,
+              "ActivateCutsceneStep": -1,
+              "FastChangesName": null
+            },
+            {
+              "StepName": "1",
+              "TotalNpcName": "Mark",
+              "DialogText": {
+                "ru": "\u041A\u0430\u043A \u0436\u0435 \u044F \u0443\u0441\u0442\u0430\u043B....",
+                "en": "I m tired...."
+              },
+              "BigPictureName": null,
+              "CursedText": false,
+              "DelayAfterNext": 0,
+              "ActivateCutsceneStep": -1,
+              "FastChangesName": null
+            },
+            {
+              "StepName": "2",
+              "TotalNpcName": "",
+              "DialogText": {
+                "ru": "\u0413\u041E\u041E\u041E\u041E\u041E\u041E\u041E\u041E\u041E\u041E\u041B!!!!",
+                "en": ""
+              },
+              "BigPictureName": null,
+              "CursedText": false,
+              "DelayAfterNext": 0,
+              "ActivateCutsceneStep": -1,
+              "FastChangesName": null
+            }
+          ],
+          "Choices": []
+        }
+      ],
+      "BigPicturesPresets": [],
+      "MoreRead": true,
+      "CanMove": false,
+      "CanInter": false,
+      "MainPanelStartDelay": 0,
+      "FastChangesName": null,
+      "DarkAfterEnd": false,
+      "ActivateCutsceneStepAfterEnd": -1
     }
   ]
 }
