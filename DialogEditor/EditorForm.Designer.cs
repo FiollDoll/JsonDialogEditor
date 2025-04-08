@@ -41,15 +41,18 @@ partial class EditorForm
         checkCanInter = new System.Windows.Forms.CheckBox();
         checkCanMove = new System.Windows.Forms.CheckBox();
         pageSteps = new System.Windows.Forms.GroupBox();
+        buttonDialogStepPref = new System.Windows.Forms.Button();
+        buttonDialogStep = new System.Windows.Forms.Button();
         dialogStepManage = new System.Windows.Forms.GroupBox();
-        buttonSaveDialog = new System.Windows.Forms.Button();
+        dialogStepPreference = new System.Windows.Forms.GroupBox();
+        checkBoxCursedText = new System.Windows.Forms.CheckBox();
         label6 = new System.Windows.Forms.Label();
         label5 = new System.Windows.Forms.Label();
         textBoxEn = new System.Windows.Forms.TextBox();
         textBoxRu = new System.Windows.Forms.TextBox();
         label4 = new System.Windows.Forms.Label();
-        label3 = new System.Windows.Forms.Label();
         textBoxNpcName = new System.Windows.Forms.TextBox();
+        buttonSaveDialog = new System.Windows.Forms.Button();
         label2 = new System.Windows.Forms.Label();
         Label = new System.Windows.Forms.Label();
         buttonAddStep = new System.Windows.Forms.Button();
@@ -61,6 +64,7 @@ partial class EditorForm
         pagePreference.SuspendLayout();
         pageSteps.SuspendLayout();
         dialogStepManage.SuspendLayout();
+        dialogStepPreference.SuspendLayout();
         SuspendLayout();
         // 
         // buttonExit
@@ -153,7 +157,11 @@ partial class EditorForm
         // 
         // pageSteps
         // 
+        pageSteps.Controls.Add(dialogStepPreference);
+        pageSteps.Controls.Add(buttonDialogStepPref);
+        pageSteps.Controls.Add(buttonDialogStep);
         pageSteps.Controls.Add(dialogStepManage);
+        pageSteps.Controls.Add(buttonSaveDialog);
         pageSteps.Controls.Add(label2);
         pageSteps.Controls.Add(Label);
         pageSteps.Controls.Add(buttonAddStep);
@@ -166,35 +174,61 @@ partial class EditorForm
         pageSteps.TabIndex = 7;
         pageSteps.TabStop = false;
         // 
+        // buttonDialogStepPref
+        // 
+        buttonDialogStepPref.Location = new System.Drawing.Point(128, 270);
+        buttonDialogStepPref.Name = "buttonDialogStepPref";
+        buttonDialogStepPref.Size = new System.Drawing.Size(99, 29);
+        buttonDialogStepPref.TabIndex = 8;
+        buttonDialogStepPref.Text = "Настройки";
+        buttonDialogStepPref.UseVisualStyleBackColor = true;
+        buttonDialogStepPref.Click += buttonDialogStepPref_Click;
+        // 
+        // buttonDialogStep
+        // 
+        buttonDialogStep.Location = new System.Drawing.Point(23, 270);
+        buttonDialogStep.Name = "buttonDialogStep";
+        buttonDialogStep.Size = new System.Drawing.Size(99, 29);
+        buttonDialogStep.TabIndex = 7;
+        buttonDialogStep.Text = "Диалог";
+        buttonDialogStep.UseVisualStyleBackColor = true;
+        buttonDialogStep.Click += buttonDialogStep_Click;
+        // 
         // dialogStepManage
         // 
-        dialogStepManage.Controls.Add(buttonSaveDialog);
         dialogStepManage.Controls.Add(label6);
         dialogStepManage.Controls.Add(label5);
         dialogStepManage.Controls.Add(textBoxEn);
         dialogStepManage.Controls.Add(textBoxRu);
         dialogStepManage.Controls.Add(label4);
-        dialogStepManage.Controls.Add(label3);
         dialogStepManage.Controls.Add(textBoxNpcName);
         dialogStepManage.Location = new System.Drawing.Point(10, 67);
         dialogStepManage.Name = "dialogStepManage";
-        dialogStepManage.Size = new System.Drawing.Size(669, 238);
+        dialogStepManage.Size = new System.Drawing.Size(670, 203);
         dialogStepManage.TabIndex = 6;
         dialogStepManage.TabStop = false;
         // 
-        // buttonSaveDialog
+        // dialogStepPreference
         // 
-        buttonSaveDialog.Location = new System.Drawing.Point(552, 206);
-        buttonSaveDialog.Name = "buttonSaveDialog";
-        buttonSaveDialog.Size = new System.Drawing.Size(100, 26);
-        buttonSaveDialog.TabIndex = 6;
-        buttonSaveDialog.Text = "Сохранить диалог";
-        buttonSaveDialog.UseVisualStyleBackColor = true;
-        buttonSaveDialog.Click += buttonSaveDialog_Click;
+        dialogStepPreference.Controls.Add(checkBoxCursedText);
+        dialogStepPreference.Location = new System.Drawing.Point(10, 67);
+        dialogStepPreference.Name = "dialogStepPreference";
+        dialogStepPreference.Size = new System.Drawing.Size(670, 203);
+        dialogStepPreference.TabIndex = 6;
+        dialogStepPreference.TabStop = false;
+        // 
+        // checkBoxCursedText
+        // 
+        checkBoxCursedText.Location = new System.Drawing.Point(18, 19);
+        checkBoxCursedText.Name = "checkBoxCursedText";
+        checkBoxCursedText.Size = new System.Drawing.Size(164, 19);
+        checkBoxCursedText.TabIndex = 0;
+        checkBoxCursedText.Text = "Сломанный текст";
+        checkBoxCursedText.UseVisualStyleBackColor = true;
         // 
         // label6
         // 
-        label6.Location = new System.Drawing.Point(455, 53);
+        label6.Location = new System.Drawing.Point(323, 56);
         label6.Name = "label6";
         label6.Size = new System.Drawing.Size(31, 21);
         label6.TabIndex = 5;
@@ -202,7 +236,7 @@ partial class EditorForm
         // 
         // label5
         // 
-        label5.Location = new System.Drawing.Point(168, 53);
+        label5.Location = new System.Drawing.Point(44, 56);
         label5.Name = "label5";
         label5.Size = new System.Drawing.Size(31, 21);
         label5.TabIndex = 4;
@@ -210,7 +244,7 @@ partial class EditorForm
         // 
         // textBoxEn
         // 
-        textBoxEn.Location = new System.Drawing.Point(360, 77);
+        textBoxEn.Location = new System.Drawing.Point(360, 56);
         textBoxEn.Multiline = true;
         textBoxEn.Name = "textBoxEn";
         textBoxEn.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -220,7 +254,7 @@ partial class EditorForm
         // 
         // textBoxRu
         // 
-        textBoxRu.Location = new System.Drawing.Point(81, 77);
+        textBoxRu.Location = new System.Drawing.Point(81, 56);
         textBoxRu.Multiline = true;
         textBoxRu.Name = "textBoxRu";
         textBoxRu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -230,28 +264,29 @@ partial class EditorForm
         // 
         // label4
         // 
-        label4.Location = new System.Drawing.Point(-31, 23);
+        label4.Location = new System.Drawing.Point(23, 23);
         label4.Name = "label4";
-        label4.Size = new System.Drawing.Size(106, 22);
+        label4.Size = new System.Drawing.Size(68, 22);
         label4.TabIndex = 1;
         label4.Text = "Npc name";
         label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
         // 
-        // label3
-        // 
-        label3.Location = new System.Drawing.Point(-31, 22);
-        label3.Name = "label3";
-        label3.Size = new System.Drawing.Size(106, 22);
-        label3.TabIndex = 1;
-        label3.Text = "Npc name";
-        label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-        // 
         // textBoxNpcName
         // 
-        textBoxNpcName.Location = new System.Drawing.Point(81, 22);
+        textBoxNpcName.Location = new System.Drawing.Point(97, 22);
         textBoxNpcName.Name = "textBoxNpcName";
         textBoxNpcName.Size = new System.Drawing.Size(147, 23);
         textBoxNpcName.TabIndex = 0;
+        // 
+        // buttonSaveDialog
+        // 
+        buttonSaveDialog.Location = new System.Drawing.Point(580, 274);
+        buttonSaveDialog.Name = "buttonSaveDialog";
+        buttonSaveDialog.Size = new System.Drawing.Size(100, 26);
+        buttonSaveDialog.TabIndex = 6;
+        buttonSaveDialog.Text = "Сохранить диалог";
+        buttonSaveDialog.UseVisualStyleBackColor = true;
+        buttonSaveDialog.Click += buttonSaveDialog_Click;
         // 
         // label2
         // 
@@ -348,8 +383,15 @@ partial class EditorForm
         pageSteps.ResumeLayout(false);
         dialogStepManage.ResumeLayout(false);
         dialogStepManage.PerformLayout();
+        dialogStepPreference.ResumeLayout(false);
         ResumeLayout(false);
     }
+
+    private System.Windows.Forms.CheckBox checkBoxCursedText;
+    private System.Windows.Forms.Button buttonDialogStep;
+    private System.Windows.Forms.Button buttonDialogStepPref;
+
+    private System.Windows.Forms.GroupBox dialogStepPreference;
 
     private System.Windows.Forms.Button buttonSaveDialog;
 
@@ -361,7 +403,6 @@ partial class EditorForm
     private System.Windows.Forms.TextBox textBoxRu;
 
     private System.Windows.Forms.TextBox textBoxNpcName;
-    private System.Windows.Forms.Label label3;
 
     private System.Windows.Forms.GroupBox dialogStepManage;
 

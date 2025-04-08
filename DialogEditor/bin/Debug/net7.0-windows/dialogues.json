@@ -46,6 +46,40 @@
       "FastChangesName": null,
       "DarkAfterEnd": false,
       "ActivateCutsceneStepAfterEnd": -1
+    },
+    {
+      "NameDialog": "test",
+      "Read": false,
+      "StyleOfDialog": 0,
+      "StepBranches": [
+        {
+          "BranchName": "Main",
+          "DialogSteps": [
+            {
+              "StepName": "0",
+              "TotalNpcName": "Test",
+              "DialogText": {
+                "ru": "\u0410\u0431\u043E\u0431\u0430",
+                "en": "Aaaa"
+              },
+              "BigPictureName": null,
+              "CursedText": false,
+              "DelayAfterNext": 0,
+              "ActivateCutsceneStep": -1,
+              "FastChangesName": null
+            }
+          ],
+          "Choices": []
+        }
+      ],
+      "BigPicturesPresets": [],
+      "MoreRead": true,
+      "CanMove": true,
+      "CanInter": true,
+      "MainPanelStartDelay": 0,
+      "FastChangesName": null,
+      "DarkAfterEnd": false,
+      "ActivateCutsceneStepAfterEnd": -1
     }
   ]
 }

@@ -1,29 +1,40 @@
 namespace DialogEditor;
 
+using System.Text.Json;
+
 public partial class StartForm : Form
 {
     public StartForm()
     {
         InitializeComponent();
+        using (var fs = new FileStream("dialogues.json", FileMode.Open))
+        {
+            DialogCollection dialogCollection = JsonSerializer.Deserialize<DialogCollection>(fs);
+            foreach (Dialog dialog in dialogCollection.Dialogs)
+                comboBox1.Items.Add(dialog.NameDialog);
+        }
     }
 
-    private void CreateOrEdit(bool edit)
+    private void buttonLoad_Click(object sender, EventArgs e)
     {
+        string dialogName = "";
+        
         if (textBox1.Text != "")
+            dialogName = textBox1.Text;
+        if (comboBox1.Text != "")
+            dialogName = comboBox1.Text;
+        
+        if (dialogName != "")
         {
             EditorForm editorForm = new EditorForm();
             editorForm.Show();
-            editorForm.LoadedDialog = textBox1.Text;
-            editorForm.NewDialog = !edit;
+            editorForm.LoadedDialog = dialogName;
             editorForm.LoadOrCreateDialog();
             this.Hide();
         }
         else
             MessageBox.Show("Вы не ввели название файла");
     }
-
-    private void buttonCreate_Click_1(object sender, EventArgs e) => CreateOrEdit(false);
-    private void buttonLoad_Click(object sender, EventArgs e) => CreateOrEdit(true);
 
     private void buttonLoadJson_Click(object sender, EventArgs e)
     {

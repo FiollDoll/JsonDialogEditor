@@ -8,7 +8,6 @@ namespace DialogEditor
         private StepBranch _selectedBranch;
         private DialogStep _selectedStep;
         public string LoadedDialog;
-        public bool NewDialog;
 
         public EditorForm()
         {
@@ -19,26 +18,21 @@ namespace DialogEditor
 
         public void LoadOrCreateDialog()
         {
-            if (NewDialog)
+            using (var fs = new FileStream("dialogues.json", FileMode.Open))
             {
-                _selectedDialog = new Dialog(LoadedDialog);
-                _selectedDialog.StepBranches.Add(new StepBranch("Main"));
-            }
-            else
-            {
-                using (var fs = new FileStream("dialogues.json", FileMode.Open))
+                DialogCollection dialogCollection = JsonSerializer.Deserialize<DialogCollection>(fs);
+                foreach (Dialog dialog in dialogCollection.Dialogs)
                 {
-                    DialogCollection dialogCollection = JsonSerializer.Deserialize<DialogCollection>(fs);
-
-                    foreach (Dialog dialog in dialogCollection.Dialogs)
+                    if (dialog.NameDialog == LoadedDialog)
                     {
-                        Console.WriteLine(dialog.NameDialog);
-                        if (dialog.NameDialog == LoadedDialog)
-                        {
-                            _selectedDialog = dialog;
-                            break;
-                        }
+                        _selectedDialog = dialog;
+                        break;
                     }
+                }
+                if (_selectedDialog == null)
+                {
+                    _selectedDialog = new Dialog(LoadedDialog);
+                    _selectedDialog.StepBranches.Add(new StepBranch("Main"));
                 }
             }
 
@@ -119,6 +113,8 @@ namespace DialogEditor
             comboBoxSelectedBranch.Text = _selectedBranch.BranchName;
             UpdateBranchesUi();
             UpdateStepsUi();
+            dialogStepManage.Visible = true;
+            dialogStepPreference.Visible = false;
         }
 
         private void UpdateBranchesUi()
@@ -175,12 +171,26 @@ namespace DialogEditor
             textBoxNpcName.Text = _selectedStep.TotalNpcName;
             textBoxRu.Text = _selectedStep.DialogText.ru;
             textBoxEn.Text = _selectedStep.DialogText.en;
+            dialogStepManage.Visible = true;
+            dialogStepPreference.Visible = false;
         }
 
         private void buttonSaveDialog_Click(object sender, EventArgs e)
         {
             _selectedStep.TotalNpcName = textBoxNpcName.Text;
             _selectedStep.DialogText = new LanguageSetting(textBoxRu.Text, textBoxEn.Text);
+        }
+
+        private void buttonDialogStep_Click(object sender, EventArgs e)
+        {
+            dialogStepManage.Visible = true;
+            dialogStepPreference.Visible = false;
+        }
+
+        private void buttonDialogStepPref_Click(object sender, EventArgs e)
+        {
+            dialogStepManage.Visible = false;
+            dialogStepPreference.Visible = true;
         }
     }
 }

@@ -29,77 +29,75 @@ partial class StartForm
     /// </summary>
     private void InitializeComponent()
     {
-        buttonCreate = new System.Windows.Forms.Button();
         buttonLoad = new System.Windows.Forms.Button();
         textBox1 = new System.Windows.Forms.TextBox();
         labelDialogName = new System.Windows.Forms.Label();
-        buttonLoadJson = new System.Windows.Forms.Button();
+        label1 = new System.Windows.Forms.Label();
+        comboBox1 = new System.Windows.Forms.ComboBox();
         SuspendLayout();
-        // 
-        // buttonCreate
-        // 
-        buttonCreate.Location = new System.Drawing.Point(224, 229);
-        buttonCreate.Name = "buttonCreate";
-        buttonCreate.Size = new System.Drawing.Size(134, 34);
-        buttonCreate.TabIndex = 0;
-        buttonCreate.Text = "Создать";
-        buttonCreate.UseVisualStyleBackColor = true;
-        buttonCreate.Click += buttonCreate_Click_1;
         // 
         // buttonLoad
         // 
-        buttonLoad.Location = new System.Drawing.Point(419, 229);
+        buttonLoad.Location = new System.Drawing.Point(318, 275);
         buttonLoad.Name = "buttonLoad";
         buttonLoad.Size = new System.Drawing.Size(134, 34);
         buttonLoad.TabIndex = 1;
-        buttonLoad.Text = "Загрузить";
+        buttonLoad.Text = "Открыть";
         buttonLoad.UseVisualStyleBackColor = true;
         buttonLoad.Click += buttonLoad_Click;
         // 
         // textBox1
         // 
-        textBox1.Location = new System.Drawing.Point(284, 162);
+        textBox1.Location = new System.Drawing.Point(128, 215);
         textBox1.Name = "textBox1";
         textBox1.Size = new System.Drawing.Size(206, 23);
         textBox1.TabIndex = 2;
         // 
         // labelDialogName
         // 
-        labelDialogName.Location = new System.Drawing.Point(284, 116);
+        labelDialogName.Location = new System.Drawing.Point(281, 156);
         labelDialogName.Name = "labelDialogName";
         labelDialogName.Size = new System.Drawing.Size(206, 43);
         labelDialogName.TabIndex = 3;
         labelDialogName.Text = "Название диалога";
         labelDialogName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
         // 
-        // buttonLoadJson
+        // label1
         // 
-        buttonLoadJson.Location = new System.Drawing.Point(12, 404);
-        buttonLoadJson.Name = "buttonLoadJson";
-        buttonLoadJson.Size = new System.Drawing.Size(134, 34);
-        buttonLoadJson.TabIndex = 4;
-        buttonLoadJson.Text = "Подгрузить json";
-        buttonLoadJson.UseVisualStyleBackColor = true;
-        buttonLoadJson.Click += buttonLoadJson_Click;
+        label1.Location = new System.Drawing.Point(340, 210);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(82, 31);
+        label1.TabIndex = 4;
+        label1.Text = "или";
+        label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        // 
+        // comboBox1
+        // 
+        comboBox1.FormattingEnabled = true;
+        comboBox1.Location = new System.Drawing.Point(428, 215);
+        comboBox1.Name = "comboBox1";
+        comboBox1.Size = new System.Drawing.Size(212, 23);
+        comboBox1.TabIndex = 5;
         // 
         // StartForm
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(800, 450);
-        Controls.Add(buttonLoadJson);
+        Controls.Add(comboBox1);
+        Controls.Add(label1);
         Controls.Add(labelDialogName);
         Controls.Add(textBox1);
         Controls.Add(buttonLoad);
-        Controls.Add(buttonCreate);
         Text = "Form1";
         ResumeLayout(false);
         PerformLayout();
     }
 
-    private System.Windows.Forms.Button buttonLoadJson;
+    private System.Windows.Forms.ComboBox comboBox1;
 
-    private System.Windows.Forms.Button buttonCreate;
+    private System.Windows.Forms.Label label1;
+
     private System.Windows.Forms.Button buttonLoad;
     private System.Windows.Forms.TextBox textBox1;
     private System.Windows.Forms.Label labelDialogName;
