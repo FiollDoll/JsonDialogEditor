@@ -23,7 +23,7 @@ namespace DialogEditor
         /// Название диалога. Происходит из StartForm
         /// </summary>
         public string LoadedDialog;
-        
+
         /// <summary>
         /// Путь к файлу
         /// </summary>
@@ -166,7 +166,23 @@ namespace DialogEditor
             UpdateStepsUi();
             UpdateStep();
         }
-
+        
+        /// <summary>
+        /// Удаление выбранного шага
+        /// </summary>
+        private void buttonRemoveStep_Click(object sender, EventArgs e)
+        {
+            // Меняем индекс(имя)
+            foreach (DialogStep step in _selectedBranch.DialogSteps)
+            {
+                if (int.Parse(_selectedStep.StepName) < int.Parse(step.StepName))
+                    step.StepName = (int.Parse(step.StepName) - 1).ToString();
+            }
+            _selectedBranch.DialogSteps.Remove(_selectedStep);
+            buttonLastStep_Click(sender, e);
+            UpdateStepsUi();
+            UpdateStep();
+        }
 
         /// <summary>
         /// Выбираем шаг диалога
@@ -176,6 +192,34 @@ namespace DialogEditor
             // Для изменяемой ссылки
             _selectedStep = _selectedBranch.GetDialogStepByName(comboBoxSelectedStep.Text);
             UpdateStep();
+        }
+
+        /// <summary>
+        /// Быстрое переключение шага на +1
+        /// </summary>
+        private void buttonNextStep_Click(object sender, EventArgs e)
+        {
+            if (comboBoxSelectedStep.SelectedIndex < comboBoxSelectedStep.Items.Count - 1)
+            {
+                comboBoxSelectedStep.Text =
+                    comboBoxSelectedStep.Items[comboBoxSelectedStep.SelectedIndex + 1].ToString();
+                _selectedStep = _selectedBranch.GetDialogStepByName(comboBoxSelectedStep.Text);
+                UpdateStep();
+            }
+        }
+
+        /// <summary>
+        /// Быстрое переключение шага на -1
+        /// </summary>
+        private void buttonLastStep_Click(object sender, EventArgs e)
+        {
+            if (comboBoxSelectedStep.SelectedIndex > 0)
+            {
+                comboBoxSelectedStep.Text =
+                    comboBoxSelectedStep.Items[comboBoxSelectedStep.SelectedIndex - 1].ToString();
+                _selectedStep = _selectedBranch.GetDialogStepByName(comboBoxSelectedStep.Text);
+                UpdateStep();
+            }
         }
 
         #endregion
@@ -300,5 +344,37 @@ namespace DialogEditor
         }
 
         #endregion
+
+        private void buttonExit_Click(object sender, EventArgs e) => this.Close();
+
+        private void buttonDeleteDialog_Click(object sender, EventArgs e)
+        {
+            DialogCollection dialogCollection;
+            using (var fs = new FileStream(PathToFile, FileMode.Open))
+            {
+                try
+                {
+                    dialogCollection = JsonSerializer.Deserialize<DialogCollection>(fs);
+                }
+                catch (JsonException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    dialogCollection = new DialogCollection();
+                }
+            }
+
+            for (int i = 0; i < dialogCollection.Dialogs.Count; i++)
+            {
+                if (dialogCollection.Dialogs[i].NameDialog == _selectedDialog.NameDialog)
+                {
+                    dialogCollection.Dialogs.Remove(dialogCollection.Dialogs[i]);
+                    break;
+                }
+            }
+            
+            using (var fs = new FileStream(PathToFile, FileMode.Create)) // Открываем файл для записи
+                JsonSerializer.Serialize(fs, dialogCollection);
+            this.Close();
+        }
     }
 }

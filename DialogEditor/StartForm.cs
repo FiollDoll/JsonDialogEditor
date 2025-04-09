@@ -42,10 +42,10 @@ public partial class StartForm : Form
         {
             EditorForm editorForm = new EditorForm();
             editorForm.Show();
+            editorForm.Location = this.Location;
             editorForm.LoadedDialog = dialogName;
             editorForm.PathToFile = _pathToFile;
             editorForm.LoadOrCreateDialog();
-            this.Hide();
         }
         else
             MessageBox.Show("Вы не ввели название файла");

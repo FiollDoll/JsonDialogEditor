@@ -41,17 +41,12 @@ partial class EditorForm
         checkCanInter = new System.Windows.Forms.CheckBox();
         checkCanMove = new System.Windows.Forms.CheckBox();
         pageSteps = new System.Windows.Forms.GroupBox();
+        buttonLastStep = new System.Windows.Forms.Button();
+        buttonNextStep = new System.Windows.Forms.Button();
+        buttonRemoveBranch = new System.Windows.Forms.Button();
+        buttonRemoveStep = new System.Windows.Forms.Button();
         buttonDialogStepPref = new System.Windows.Forms.Button();
         buttonDialogStep = new System.Windows.Forms.Button();
-        dialogStepManage = new System.Windows.Forms.GroupBox();
-        comboBoxMood = new System.Windows.Forms.ComboBox();
-        label3 = new System.Windows.Forms.Label();
-        label6 = new System.Windows.Forms.Label();
-        label5 = new System.Windows.Forms.Label();
-        textBoxEn = new System.Windows.Forms.TextBox();
-        textBoxRu = new System.Windows.Forms.TextBox();
-        label4 = new System.Windows.Forms.Label();
-        textBoxNpcName = new System.Windows.Forms.TextBox();
         buttonSaveDialog = new System.Windows.Forms.Button();
         label2 = new System.Windows.Forms.Label();
         Label = new System.Windows.Forms.Label();
@@ -61,12 +56,22 @@ partial class EditorForm
         comboBoxSelectedBranch = new System.Windows.Forms.ComboBox();
         dialogStepPreference = new System.Windows.Forms.GroupBox();
         checkBoxCursedText = new System.Windows.Forms.CheckBox();
+        dialogStepManage = new System.Windows.Forms.GroupBox();
+        comboBoxMood = new System.Windows.Forms.ComboBox();
+        label3 = new System.Windows.Forms.Label();
+        label6 = new System.Windows.Forms.Label();
+        label5 = new System.Windows.Forms.Label();
+        textBoxEn = new System.Windows.Forms.TextBox();
+        textBoxRu = new System.Windows.Forms.TextBox();
+        label4 = new System.Windows.Forms.Label();
+        textBoxNpcName = new System.Windows.Forms.TextBox();
         buttonPageFirst = new System.Windows.Forms.Button();
         buttonPageDialog = new System.Windows.Forms.Button();
+        buttonDeleteDialog = new System.Windows.Forms.Button();
         pagePreference.SuspendLayout();
         pageSteps.SuspendLayout();
-        dialogStepManage.SuspendLayout();
         dialogStepPreference.SuspendLayout();
+        dialogStepManage.SuspendLayout();
         SuspendLayout();
         // 
         // buttonExit
@@ -77,24 +82,29 @@ partial class EditorForm
         buttonExit.TabIndex = 0;
         buttonExit.Text = "<-";
         buttonExit.UseVisualStyleBackColor = true;
+        buttonExit.Click += buttonExit_Click;
         // 
         // labelDialog
         // 
+        labelDialog.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
         labelDialog.Location = new System.Drawing.Point(243, 13);
         labelDialog.Name = "labelDialog";
-        labelDialog.Size = new System.Drawing.Size(285, 40);
+        labelDialog.Size = new System.Drawing.Size(285, 26);
         labelDialog.TabIndex = 1;
         labelDialog.Text = "DialogName";
         labelDialog.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
         // 
         // ButtonSave
         // 
+        ButtonSave.BackColor = System.Drawing.Color.FromArgb(((int)((byte)224)), ((int)((byte)224)), ((int)((byte)224)));
+        ButtonSave.FlatAppearance.BorderSize = 0;
+        ButtonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
         ButtonSave.Location = new System.Drawing.Point(641, 401);
         ButtonSave.Name = "ButtonSave";
         ButtonSave.Size = new System.Drawing.Size(147, 40);
         ButtonSave.TabIndex = 2;
         ButtonSave.Text = "Сохранить";
-        ButtonSave.UseVisualStyleBackColor = true;
+        ButtonSave.UseVisualStyleBackColor = false;
         ButtonSave.Click += ButtonSave_Click;
         // 
         // label1
@@ -159,6 +169,10 @@ partial class EditorForm
         // 
         // pageSteps
         // 
+        pageSteps.Controls.Add(buttonLastStep);
+        pageSteps.Controls.Add(buttonNextStep);
+        pageSteps.Controls.Add(buttonRemoveBranch);
+        pageSteps.Controls.Add(buttonRemoveStep);
         pageSteps.Controls.Add(buttonDialogStepPref);
         pageSteps.Controls.Add(buttonDialogStep);
         pageSteps.Controls.Add(buttonSaveDialog);
@@ -175,6 +189,47 @@ partial class EditorForm
         pageSteps.Size = new System.Drawing.Size(697, 306);
         pageSteps.TabIndex = 7;
         pageSteps.TabStop = false;
+        // 
+        // buttonLastStep
+        // 
+        buttonLastStep.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        buttonLastStep.Location = new System.Drawing.Point(453, 37);
+        buttonLastStep.Name = "buttonLastStep";
+        buttonLastStep.Size = new System.Drawing.Size(25, 24);
+        buttonLastStep.TabIndex = 12;
+        buttonLastStep.Text = "<-";
+        buttonLastStep.UseVisualStyleBackColor = true;
+        buttonLastStep.Click += buttonLastStep_Click;
+        // 
+        // buttonNextStep
+        // 
+        buttonNextStep.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        buttonNextStep.Location = new System.Drawing.Point(484, 37);
+        buttonNextStep.Name = "buttonNextStep";
+        buttonNextStep.Size = new System.Drawing.Size(25, 24);
+        buttonNextStep.TabIndex = 11;
+        buttonNextStep.Text = "->";
+        buttonNextStep.UseVisualStyleBackColor = true;
+        buttonNextStep.Click += buttonNextStep_Click;
+        // 
+        // buttonRemoveBranch
+        // 
+        buttonRemoveBranch.Location = new System.Drawing.Point(160, 36);
+        buttonRemoveBranch.Name = "buttonRemoveBranch";
+        buttonRemoveBranch.Size = new System.Drawing.Size(25, 24);
+        buttonRemoveBranch.TabIndex = 10;
+        buttonRemoveBranch.Text = "-";
+        buttonRemoveBranch.UseVisualStyleBackColor = true;
+        // 
+        // buttonRemoveStep
+        // 
+        buttonRemoveStep.Location = new System.Drawing.Point(665, 36);
+        buttonRemoveStep.Name = "buttonRemoveStep";
+        buttonRemoveStep.Size = new System.Drawing.Size(25, 24);
+        buttonRemoveStep.TabIndex = 9;
+        buttonRemoveStep.Text = "-";
+        buttonRemoveStep.UseVisualStyleBackColor = true;
+        buttonRemoveStep.Click += buttonRemoveStep_Click;
         // 
         // buttonDialogStepPref
         // 
@@ -195,6 +250,89 @@ partial class EditorForm
         buttonDialogStep.Text = "Диалог";
         buttonDialogStep.UseVisualStyleBackColor = true;
         buttonDialogStep.Click += buttonDialogStep_Click;
+        // 
+        // buttonSaveDialog
+        // 
+        buttonSaveDialog.Location = new System.Drawing.Point(580, 274);
+        buttonSaveDialog.Name = "buttonSaveDialog";
+        buttonSaveDialog.Size = new System.Drawing.Size(100, 26);
+        buttonSaveDialog.TabIndex = 6;
+        buttonSaveDialog.Text = "Сохранить диалог";
+        buttonSaveDialog.UseVisualStyleBackColor = true;
+        buttonSaveDialog.Click += buttonSaveDialog_Click;
+        // 
+        // label2
+        // 
+        label2.Location = new System.Drawing.Point(515, 21);
+        label2.Name = "label2";
+        label2.Size = new System.Drawing.Size(113, 14);
+        label2.TabIndex = 5;
+        label2.Text = "Шаг диалога";
+        // 
+        // Label
+        // 
+        Label.Location = new System.Drawing.Point(10, 19);
+        Label.Name = "Label";
+        Label.Size = new System.Drawing.Size(116, 18);
+        Label.TabIndex = 4;
+        Label.Text = "Ветки";
+        // 
+        // buttonAddStep
+        // 
+        buttonAddStep.Location = new System.Drawing.Point(634, 36);
+        buttonAddStep.Name = "buttonAddStep";
+        buttonAddStep.Size = new System.Drawing.Size(25, 24);
+        buttonAddStep.TabIndex = 3;
+        buttonAddStep.Text = "+";
+        buttonAddStep.UseVisualStyleBackColor = true;
+        buttonAddStep.Click += buttonAddStep_Click;
+        // 
+        // comboBoxSelectedStep
+        // 
+        comboBoxSelectedStep.FormattingEnabled = true;
+        comboBoxSelectedStep.Location = new System.Drawing.Point(515, 38);
+        comboBoxSelectedStep.Name = "comboBoxSelectedStep";
+        comboBoxSelectedStep.Size = new System.Drawing.Size(113, 23);
+        comboBoxSelectedStep.TabIndex = 2;
+        comboBoxSelectedStep.SelectedIndexChanged += comboBoxSelectedStep_SelectedIndexChanged;
+        // 
+        // buttonAddBranch
+        // 
+        buttonAddBranch.Location = new System.Drawing.Point(129, 36);
+        buttonAddBranch.Name = "buttonAddBranch";
+        buttonAddBranch.Size = new System.Drawing.Size(25, 24);
+        buttonAddBranch.TabIndex = 1;
+        buttonAddBranch.Text = "+";
+        buttonAddBranch.UseVisualStyleBackColor = true;
+        buttonAddBranch.Click += buttonAddBranch_Click;
+        // 
+        // comboBoxSelectedBranch
+        // 
+        comboBoxSelectedBranch.FormattingEnabled = true;
+        comboBoxSelectedBranch.Location = new System.Drawing.Point(10, 38);
+        comboBoxSelectedBranch.Name = "comboBoxSelectedBranch";
+        comboBoxSelectedBranch.Size = new System.Drawing.Size(113, 23);
+        comboBoxSelectedBranch.TabIndex = 1;
+        comboBoxSelectedBranch.SelectedIndexChanged += comboBoxSelectedBranch_SelectedIndexChanged;
+        // 
+        // dialogStepPreference
+        // 
+        dialogStepPreference.Controls.Add(checkBoxCursedText);
+        dialogStepPreference.Location = new System.Drawing.Point(10, 67);
+        dialogStepPreference.Name = "dialogStepPreference";
+        dialogStepPreference.Size = new System.Drawing.Size(670, 203);
+        dialogStepPreference.TabIndex = 6;
+        dialogStepPreference.TabStop = false;
+        // 
+        // checkBoxCursedText
+        // 
+        checkBoxCursedText.Location = new System.Drawing.Point(18, 19);
+        checkBoxCursedText.Name = "checkBoxCursedText";
+        checkBoxCursedText.Size = new System.Drawing.Size(164, 19);
+        checkBoxCursedText.TabIndex = 0;
+        checkBoxCursedText.Text = "Сломанный текст";
+        checkBoxCursedText.UseVisualStyleBackColor = true;
+        checkBoxCursedText.CheckedChanged += checkBoxCursedText_CheckedChanged;
         // 
         // dialogStepManage
         // 
@@ -281,108 +419,45 @@ partial class EditorForm
         textBoxNpcName.Size = new System.Drawing.Size(147, 23);
         textBoxNpcName.TabIndex = 0;
         // 
-        // buttonSaveDialog
-        // 
-        buttonSaveDialog.Location = new System.Drawing.Point(580, 274);
-        buttonSaveDialog.Name = "buttonSaveDialog";
-        buttonSaveDialog.Size = new System.Drawing.Size(100, 26);
-        buttonSaveDialog.TabIndex = 6;
-        buttonSaveDialog.Text = "Сохранить диалог";
-        buttonSaveDialog.UseVisualStyleBackColor = true;
-        buttonSaveDialog.Click += buttonSaveDialog_Click;
-        // 
-        // label2
-        // 
-        label2.Location = new System.Drawing.Point(536, 19);
-        label2.Name = "label2";
-        label2.Size = new System.Drawing.Size(113, 14);
-        label2.TabIndex = 5;
-        label2.Text = "Шаг диалога";
-        // 
-        // Label
-        // 
-        Label.Location = new System.Drawing.Point(10, 19);
-        Label.Name = "Label";
-        Label.Size = new System.Drawing.Size(116, 18);
-        Label.TabIndex = 4;
-        Label.Text = "Ветки";
-        // 
-        // buttonAddStep
-        // 
-        buttonAddStep.Location = new System.Drawing.Point(655, 34);
-        buttonAddStep.Name = "buttonAddStep";
-        buttonAddStep.Size = new System.Drawing.Size(25, 24);
-        buttonAddStep.TabIndex = 3;
-        buttonAddStep.Text = "+";
-        buttonAddStep.UseVisualStyleBackColor = true;
-        buttonAddStep.Click += buttonAddStep_Click;
-        // 
-        // comboBoxSelectedStep
-        // 
-        comboBoxSelectedStep.FormattingEnabled = true;
-        comboBoxSelectedStep.Location = new System.Drawing.Point(536, 36);
-        comboBoxSelectedStep.Name = "comboBoxSelectedStep";
-        comboBoxSelectedStep.Size = new System.Drawing.Size(113, 23);
-        comboBoxSelectedStep.TabIndex = 2;
-        comboBoxSelectedStep.SelectedIndexChanged += comboBoxSelectedStep_SelectedIndexChanged;
-        // 
-        // buttonAddBranch
-        // 
-        buttonAddBranch.Location = new System.Drawing.Point(129, 36);
-        buttonAddBranch.Name = "buttonAddBranch";
-        buttonAddBranch.Size = new System.Drawing.Size(25, 24);
-        buttonAddBranch.TabIndex = 1;
-        buttonAddBranch.Text = "+";
-        buttonAddBranch.UseVisualStyleBackColor = true;
-        buttonAddBranch.Click += buttonAddBranch_Click;
-        // 
-        // comboBoxSelectedBranch
-        // 
-        comboBoxSelectedBranch.FormattingEnabled = true;
-        comboBoxSelectedBranch.Location = new System.Drawing.Point(10, 38);
-        comboBoxSelectedBranch.Name = "comboBoxSelectedBranch";
-        comboBoxSelectedBranch.Size = new System.Drawing.Size(113, 23);
-        comboBoxSelectedBranch.TabIndex = 1;
-        comboBoxSelectedBranch.SelectedIndexChanged += comboBoxSelectedBranch_SelectedIndexChanged;
-        // 
-        // dialogStepPreference
-        // 
-        dialogStepPreference.Controls.Add(checkBoxCursedText);
-        dialogStepPreference.Location = new System.Drawing.Point(10, 67);
-        dialogStepPreference.Name = "dialogStepPreference";
-        dialogStepPreference.Size = new System.Drawing.Size(670, 203);
-        dialogStepPreference.TabIndex = 6;
-        dialogStepPreference.TabStop = false;
-        // 
-        // checkBoxCursedText
-        // 
-        checkBoxCursedText.Location = new System.Drawing.Point(18, 19);
-        checkBoxCursedText.Name = "checkBoxCursedText";
-        checkBoxCursedText.Size = new System.Drawing.Size(164, 19);
-        checkBoxCursedText.TabIndex = 0;
-        checkBoxCursedText.Text = "Сломанный текст";
-        checkBoxCursedText.UseVisualStyleBackColor = true;
-        checkBoxCursedText.CheckedChanged += checkBoxCursedText_CheckedChanged;
-        // 
         // buttonPageFirst
         // 
+        buttonPageFirst.BackColor = System.Drawing.Color.FromArgb(((int)((byte)224)), ((int)((byte)224)), ((int)((byte)224)));
+        buttonPageFirst.FlatAppearance.BorderSize = 0;
+        buttonPageFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
         buttonPageFirst.Location = new System.Drawing.Point(63, 413);
         buttonPageFirst.Name = "buttonPageFirst";
         buttonPageFirst.Size = new System.Drawing.Size(128, 28);
         buttonPageFirst.TabIndex = 7;
         buttonPageFirst.Text = "Настройки диалога";
-        buttonPageFirst.UseVisualStyleBackColor = true;
+        buttonPageFirst.UseVisualStyleBackColor = false;
         buttonPageFirst.Click += buttonPageFirst_Click;
         // 
         // buttonPageDialog
         // 
+        buttonPageDialog.BackColor = System.Drawing.Color.FromArgb(((int)((byte)224)), ((int)((byte)224)), ((int)((byte)224)));
+        buttonPageDialog.FlatAppearance.BorderSize = 0;
+        buttonPageDialog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
         buttonPageDialog.Location = new System.Drawing.Point(194, 413);
         buttonPageDialog.Name = "buttonPageDialog";
         buttonPageDialog.Size = new System.Drawing.Size(125, 28);
         buttonPageDialog.TabIndex = 8;
         buttonPageDialog.Text = "Ветки диалога";
-        buttonPageDialog.UseVisualStyleBackColor = true;
+        buttonPageDialog.UseVisualStyleBackColor = false;
         buttonPageDialog.Click += buttonPageDialog_Click;
+        // 
+        // buttonDeleteDialog
+        // 
+        buttonDeleteDialog.BackColor = System.Drawing.Color.FromArgb(((int)((byte)255)), ((int)((byte)192)), ((int)((byte)192)));
+        buttonDeleteDialog.FlatAppearance.BorderColor = System.Drawing.Color.White;
+        buttonDeleteDialog.FlatAppearance.BorderSize = 0;
+        buttonDeleteDialog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        buttonDeleteDialog.Location = new System.Drawing.Point(327, 415);
+        buttonDeleteDialog.Name = "buttonDeleteDialog";
+        buttonDeleteDialog.Size = new System.Drawing.Size(102, 26);
+        buttonDeleteDialog.TabIndex = 9;
+        buttonDeleteDialog.Text = "Удалить диалог";
+        buttonDeleteDialog.UseVisualStyleBackColor = false;
+        buttonDeleteDialog.Click += buttonDeleteDialog_Click;
         // 
         // EditorForm
         // 
@@ -390,6 +465,7 @@ partial class EditorForm
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         BackColor = System.Drawing.SystemColors.Control;
         ClientSize = new System.Drawing.Size(800, 450);
+        Controls.Add(buttonDeleteDialog);
         Controls.Add(buttonPageDialog);
         Controls.Add(buttonPageFirst);
         Controls.Add(dialogStyles);
@@ -403,11 +479,17 @@ partial class EditorForm
         Text = "EditorForm";
         pagePreference.ResumeLayout(false);
         pageSteps.ResumeLayout(false);
+        dialogStepPreference.ResumeLayout(false);
         dialogStepManage.ResumeLayout(false);
         dialogStepManage.PerformLayout();
-        dialogStepPreference.ResumeLayout(false);
         ResumeLayout(false);
     }
+
+    private System.Windows.Forms.Button buttonRemoveStep;
+    private System.Windows.Forms.Button buttonRemoveBranch;
+    private System.Windows.Forms.Button buttonNextStep;
+    private System.Windows.Forms.Button buttonLastStep;
+    private System.Windows.Forms.Button buttonDeleteDialog;
 
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.ComboBox comboBoxMood;
