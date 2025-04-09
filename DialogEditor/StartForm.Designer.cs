@@ -34,6 +34,7 @@ partial class StartForm
         labelDialogName = new System.Windows.Forms.Label();
         label1 = new System.Windows.Forms.Label();
         comboBox1 = new System.Windows.Forms.ComboBox();
+        buttonJsonSet = new System.Windows.Forms.Button();
         SuspendLayout();
         // 
         // buttonLoad
@@ -79,11 +80,22 @@ partial class StartForm
         comboBox1.Size = new System.Drawing.Size(212, 23);
         comboBox1.TabIndex = 5;
         // 
+        // buttonJsonSet
+        // 
+        buttonJsonSet.Location = new System.Drawing.Point(24, 414);
+        buttonJsonSet.Name = "buttonJsonSet";
+        buttonJsonSet.Size = new System.Drawing.Size(90, 26);
+        buttonJsonSet.TabIndex = 6;
+        buttonJsonSet.Text = "Выбрать .json";
+        buttonJsonSet.UseVisualStyleBackColor = true;
+        buttonJsonSet.Click += buttonJsonSet_Click;
+        // 
         // StartForm
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(800, 450);
+        Controls.Add(buttonJsonSet);
         Controls.Add(comboBox1);
         Controls.Add(label1);
         Controls.Add(labelDialogName);
@@ -93,6 +105,8 @@ partial class StartForm
         ResumeLayout(false);
         PerformLayout();
     }
+
+    private System.Windows.Forms.Button buttonJsonSet;
 
     private System.Windows.Forms.ComboBox comboBox1;
 

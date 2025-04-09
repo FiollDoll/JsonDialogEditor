@@ -23,13 +23,18 @@ namespace DialogEditor
         /// Название диалога. Происходит из StartForm
         /// </summary>
         public string LoadedDialog;
+        
+        /// <summary>
+        /// Путь к файлу
+        /// </summary>
+        public string PathToFile;
 
         public EditorForm()
         {
             InitializeComponent();
             pagePreference.Visible = false;
             pageSteps.Visible = false;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 8; i++)
                 comboBoxMood.Items.Add(((IconMood)i).ToString());
         }
 
@@ -38,7 +43,7 @@ namespace DialogEditor
         /// </summary>
         public void LoadOrCreateDialog()
         {
-            using (var fs = new FileStream("dialogues.json", FileMode.Open))
+            using (var fs = new FileStream(PathToFile, FileMode.Open))
             {
                 DialogCollection dialogCollection = JsonSerializer.Deserialize<DialogCollection>(fs);
                 // Ищем
@@ -70,11 +75,11 @@ namespace DialogEditor
             DialogCollection dialogCollection;
 
             // Проверяем существование файла
-            if (!File.Exists("dialogues.json") || new FileInfo("dialogues.json").Length == 0)
+            if (!File.Exists(PathToFile) || new FileInfo(PathToFile).Length == 0)
                 dialogCollection = new DialogCollection();
             else
             {
-                using (var fs = new FileStream("dialogues.json", FileMode.Open))
+                using (var fs = new FileStream(PathToFile, FileMode.Open))
                 {
                     try
                     {
@@ -105,7 +110,7 @@ namespace DialogEditor
             if (!copyFind)
                 dialogCollection.Dialogs.Add(_selectedDialog);
 
-            using (var fs = new FileStream("dialogues.json", FileMode.Create)) // Открываем файл для записи
+            using (var fs = new FileStream(PathToFile, FileMode.Create)) // Открываем файл для записи
                 JsonSerializer.Serialize(fs, dialogCollection);
         }
 
