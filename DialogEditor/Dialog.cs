@@ -1,4 +1,6 @@
-﻿public class DialogCollection
+﻿using DialogEditor;
+
+public class DialogCollection
 {
     public List<Dialog> Dialogs { get; set; }
 
@@ -19,7 +21,7 @@ public class Dialog
     public bool CanMove { get; set; }
     public bool CanInter { get; set; }
     public float MainPanelStartDelay { get; set; }
-    public string FastChangesName { get; set; }
+    public FastChangesController FastChangesController { get; set; }
     public bool DarkAfterEnd { get; set; }
     public int ActivateCutsceneStepAfterEnd { get; set; } = -1;
 
@@ -88,7 +90,7 @@ public class DialogStep
     public bool CursedText { get; set; }
     public float DelayAfterNext { get; set; }
     public int ActivateCutsceneStep { get; set; } = -1;
-    public string FastChangesName { get; set; }
+    public FastChangesController FastChanges { get; set; }
 
     public DialogStep()
     {
@@ -111,25 +113,6 @@ public class DialogChoice
 public class BigPicture
 {
     public string BigPictureName { get; set; }
-}
-
-// Просто так
-public class LanguageSetting
-{
-    public string ru { get; set; }
-    public string en { get; set; }
-
-    public LanguageSetting()
-    {
-        ru = "";
-        en = "";
-    }
-    
-    public LanguageSetting(string russianText, string englishText)
-    {
-        ru = russianText;
-        en = englishText;
-    }
 }
 
 public enum IconMood

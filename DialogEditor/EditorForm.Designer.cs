@@ -55,6 +55,15 @@ partial class EditorForm
         buttonAddBranch = new System.Windows.Forms.Button();
         comboBoxSelectedBranch = new System.Windows.Forms.ComboBox();
         dialogStepPreference = new System.Windows.Forms.GroupBox();
+        checkBoxBlockMoveZ = new System.Windows.Forms.CheckBox();
+        checkBoxBlockMove = new System.Windows.Forms.CheckBox();
+        checkBoxBlockAllMenu = new System.Windows.Forms.CheckBox();
+        label9 = new System.Windows.Forms.Label();
+        textBoxLocationSpawn = new System.Windows.Forms.TextBox();
+        label8 = new System.Windows.Forms.Label();
+        textBoxNewLocation = new System.Windows.Forms.TextBox();
+        label7 = new System.Windows.Forms.Label();
+        textBoxNewDialog = new System.Windows.Forms.TextBox();
         checkBoxCursedText = new System.Windows.Forms.CheckBox();
         dialogStepManage = new System.Windows.Forms.GroupBox();
         comboBoxMood = new System.Windows.Forms.ComboBox();
@@ -68,6 +77,12 @@ partial class EditorForm
         buttonPageFirst = new System.Windows.Forms.Button();
         buttonPageDialog = new System.Windows.Forms.Button();
         buttonDeleteDialog = new System.Windows.Forms.Button();
+        label10 = new System.Windows.Forms.Label();
+        textBoxAddItem = new System.Windows.Forms.TextBox();
+        label11 = new System.Windows.Forms.Label();
+        textBoxAddNote = new System.Windows.Forms.TextBox();
+        label12 = new System.Windows.Forms.Label();
+        textBoxChangeRelationship = new System.Windows.Forms.TextBox();
         pagePreference.SuspendLayout();
         pageSteps.SuspendLayout();
         dialogStepPreference.SuspendLayout();
@@ -317,12 +332,105 @@ partial class EditorForm
         // 
         // dialogStepPreference
         // 
+        dialogStepPreference.Controls.Add(label12);
+        dialogStepPreference.Controls.Add(textBoxChangeRelationship);
+        dialogStepPreference.Controls.Add(label11);
+        dialogStepPreference.Controls.Add(textBoxAddNote);
+        dialogStepPreference.Controls.Add(label10);
+        dialogStepPreference.Controls.Add(textBoxAddItem);
+        dialogStepPreference.Controls.Add(checkBoxBlockMoveZ);
+        dialogStepPreference.Controls.Add(checkBoxBlockMove);
+        dialogStepPreference.Controls.Add(checkBoxBlockAllMenu);
+        dialogStepPreference.Controls.Add(label9);
+        dialogStepPreference.Controls.Add(textBoxLocationSpawn);
+        dialogStepPreference.Controls.Add(label8);
+        dialogStepPreference.Controls.Add(textBoxNewLocation);
+        dialogStepPreference.Controls.Add(label7);
+        dialogStepPreference.Controls.Add(textBoxNewDialog);
         dialogStepPreference.Controls.Add(checkBoxCursedText);
         dialogStepPreference.Location = new System.Drawing.Point(10, 67);
         dialogStepPreference.Name = "dialogStepPreference";
         dialogStepPreference.Size = new System.Drawing.Size(670, 203);
         dialogStepPreference.TabIndex = 6;
         dialogStepPreference.TabStop = false;
+        // 
+        // checkBoxBlockMoveZ
+        // 
+        checkBoxBlockMoveZ.Location = new System.Drawing.Point(18, 94);
+        checkBoxBlockMoveZ.Name = "checkBoxBlockMoveZ";
+        checkBoxBlockMoveZ.Size = new System.Drawing.Size(199, 19);
+        checkBoxBlockMoveZ.TabIndex = 9;
+        checkBoxBlockMoveZ.Text = "Заблокировать движение по Z";
+        checkBoxBlockMoveZ.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+        checkBoxBlockMoveZ.UseVisualStyleBackColor = true;
+        // 
+        // checkBoxBlockMove
+        // 
+        checkBoxBlockMove.Location = new System.Drawing.Point(18, 69);
+        checkBoxBlockMove.Name = "checkBoxBlockMove";
+        checkBoxBlockMove.Size = new System.Drawing.Size(199, 19);
+        checkBoxBlockMove.TabIndex = 8;
+        checkBoxBlockMove.Text = "Заблокировать движение";
+        checkBoxBlockMove.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+        checkBoxBlockMove.UseVisualStyleBackColor = true;
+        // 
+        // checkBoxBlockAllMenu
+        // 
+        checkBoxBlockAllMenu.Location = new System.Drawing.Point(18, 44);
+        checkBoxBlockAllMenu.Name = "checkBoxBlockAllMenu";
+        checkBoxBlockAllMenu.Size = new System.Drawing.Size(164, 19);
+        checkBoxBlockAllMenu.TabIndex = 7;
+        checkBoxBlockAllMenu.Text = "Заблокировать меню";
+        checkBoxBlockAllMenu.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+        checkBoxBlockAllMenu.UseVisualStyleBackColor = true;
+        // 
+        // label9
+        // 
+        label9.Location = new System.Drawing.Point(552, 79);
+        label9.Name = "label9";
+        label9.Size = new System.Drawing.Size(97, 22);
+        label9.TabIndex = 6;
+        label9.Text = "Спавн локации";
+        label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
+        // textBoxLocationSpawn
+        // 
+        textBoxLocationSpawn.Location = new System.Drawing.Point(438, 78);
+        textBoxLocationSpawn.Name = "textBoxLocationSpawn";
+        textBoxLocationSpawn.Size = new System.Drawing.Size(108, 23);
+        textBoxLocationSpawn.TabIndex = 5;
+        // 
+        // label8
+        // 
+        label8.Location = new System.Drawing.Point(552, 50);
+        label8.Name = "label8";
+        label8.Size = new System.Drawing.Size(97, 22);
+        label8.TabIndex = 4;
+        label8.Text = "Новая локация";
+        label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
+        // textBoxNewLocation
+        // 
+        textBoxNewLocation.Location = new System.Drawing.Point(438, 49);
+        textBoxNewLocation.Name = "textBoxNewLocation";
+        textBoxNewLocation.Size = new System.Drawing.Size(108, 23);
+        textBoxNewLocation.TabIndex = 3;
+        // 
+        // label7
+        // 
+        label7.Location = new System.Drawing.Point(552, 21);
+        label7.Name = "label7";
+        label7.Size = new System.Drawing.Size(97, 22);
+        label7.TabIndex = 2;
+        label7.Text = "Новый диалог";
+        label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
+        // textBoxNewDialog
+        // 
+        textBoxNewDialog.Location = new System.Drawing.Point(438, 20);
+        textBoxNewDialog.Name = "textBoxNewDialog";
+        textBoxNewDialog.Size = new System.Drawing.Size(108, 23);
+        textBoxNewDialog.TabIndex = 1;
         // 
         // checkBoxCursedText
         // 
@@ -332,7 +440,6 @@ partial class EditorForm
         checkBoxCursedText.TabIndex = 0;
         checkBoxCursedText.Text = "Сломанный текст";
         checkBoxCursedText.UseVisualStyleBackColor = true;
-        checkBoxCursedText.CheckedChanged += checkBoxCursedText_CheckedChanged;
         // 
         // dialogStepManage
         // 
@@ -459,6 +566,60 @@ partial class EditorForm
         buttonDeleteDialog.UseVisualStyleBackColor = false;
         buttonDeleteDialog.Click += buttonDeleteDialog_Click;
         // 
+        // label10
+        // 
+        label10.Location = new System.Drawing.Point(132, 120);
+        label10.Name = "label10";
+        label10.Size = new System.Drawing.Size(97, 50);
+        label10.TabIndex = 11;
+        label10.Text = "Добавить предмет";
+        label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
+        // textBoxAddItem
+        // 
+        textBoxAddItem.Location = new System.Drawing.Point(18, 119);
+        textBoxAddItem.Multiline = true;
+        textBoxAddItem.Name = "textBoxAddItem";
+        textBoxAddItem.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+        textBoxAddItem.Size = new System.Drawing.Size(108, 51);
+        textBoxAddItem.TabIndex = 10;
+        // 
+        // label11
+        // 
+        label11.Location = new System.Drawing.Point(314, 120);
+        label11.Name = "label11";
+        label11.Size = new System.Drawing.Size(97, 50);
+        label11.TabIndex = 13;
+        label11.Text = "Добавить записку";
+        label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
+        // textBoxAddNote
+        // 
+        textBoxAddNote.Location = new System.Drawing.Point(200, 119);
+        textBoxAddNote.Multiline = true;
+        textBoxAddNote.Name = "textBoxAddNote";
+        textBoxAddNote.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+        textBoxAddNote.Size = new System.Drawing.Size(108, 51);
+        textBoxAddNote.TabIndex = 12;
+        // 
+        // label12
+        // 
+        label12.Location = new System.Drawing.Point(505, 120);
+        label12.Name = "label12";
+        label12.Size = new System.Drawing.Size(97, 50);
+        label12.TabIndex = 15;
+        label12.Text = "Изменить отношения";
+        label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
+        // textBoxChangeRelationship
+        // 
+        textBoxChangeRelationship.Location = new System.Drawing.Point(391, 119);
+        textBoxChangeRelationship.Multiline = true;
+        textBoxChangeRelationship.Name = "textBoxChangeRelationship";
+        textBoxChangeRelationship.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+        textBoxChangeRelationship.Size = new System.Drawing.Size(108, 51);
+        textBoxChangeRelationship.TabIndex = 14;
+        // 
         // EditorForm
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -480,10 +641,31 @@ partial class EditorForm
         pagePreference.ResumeLayout(false);
         pageSteps.ResumeLayout(false);
         dialogStepPreference.ResumeLayout(false);
+        dialogStepPreference.PerformLayout();
         dialogStepManage.ResumeLayout(false);
         dialogStepManage.PerformLayout();
         ResumeLayout(false);
     }
+
+    private System.Windows.Forms.Label label11;
+    private System.Windows.Forms.TextBox textBoxAddNote;
+    private System.Windows.Forms.Label label12;
+    private System.Windows.Forms.TextBox textBoxChangeRelationship;
+
+    private System.Windows.Forms.Label label10;
+    private System.Windows.Forms.TextBox textBoxAddItem;
+
+    private System.Windows.Forms.TextBox textBoxNewDialog;
+    private System.Windows.Forms.Label label8;
+    private System.Windows.Forms.TextBox textBoxLocationSpawn;
+    private System.Windows.Forms.TextBox textBoxNewLocation;
+    private System.Windows.Forms.Label label9;
+
+    private System.Windows.Forms.CheckBox checkBoxBlockAllMenu;
+    private System.Windows.Forms.CheckBox checkBoxBlockMove;
+    private System.Windows.Forms.CheckBox checkBoxBlockMoveZ;
+
+    private System.Windows.Forms.Label label7;
 
     private System.Windows.Forms.Button buttonRemoveStep;
     private System.Windows.Forms.Button buttonRemoveBranch;

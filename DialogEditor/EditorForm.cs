@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Globalization;
 
 namespace DialogEditor
 {
@@ -115,7 +116,7 @@ namespace DialogEditor
         }
 
         /// <summary>
-        /// Сохраняем диалог(основу)
+        /// Сохраняем шаг диалога
         /// </summary>
         private void buttonSaveDialog_Click(object sender, EventArgs e)
         {
@@ -124,6 +125,27 @@ namespace DialogEditor
                 _selectedStep.TotalNpcName = "nothing";
             _selectedStep.DialogText = new LanguageSetting(textBoxRu.Text, textBoxEn.Text);
             _selectedStep.IconMoodSelected = (IconMood)comboBoxMood.SelectedIndex;
+            if (_selectedStep.FastChanges == null)
+                _selectedStep.FastChanges = new FastChangesController();
+            _selectedStep.CursedText = checkBoxCursedText.Checked;
+            _selectedStep.FastChanges.activateDialog = textBoxNewDialog.Text;
+            _selectedStep.FastChanges.moveToLocation = textBoxNewLocation.Text;
+            _selectedStep.FastChanges.moveToLocationSpawn = textBoxLocationSpawn.Text;
+            _selectedStep.FastChanges.blockPlayerMove = checkBoxBlockMove.Checked;
+            _selectedStep.FastChanges.blockPlayerMoveZ = checkBoxBlockMoveZ.Checked;
+            _selectedStep.FastChanges.lockAllMenu = checkBoxBlockAllMenu.Checked;
+            _selectedStep.FastChanges.addItem = new List<string>();
+            _selectedStep.FastChanges.addNote = new List<string>();
+            _selectedStep.FastChanges.changeRelationships = new List<FastChangesController.ChangeRelationship>();
+            foreach (var t in textBoxAddItem.Lines)
+                _selectedStep.FastChanges.addItem.Add(t);
+            foreach (var t in textBoxAddNote.Lines)
+                _selectedStep.FastChanges.addNote.Add(t);
+            foreach (var t in textBoxChangeRelationship.Lines)
+            {
+                _selectedStep.FastChanges.changeRelationships.Add(
+                    new FastChangesController.ChangeRelationship(t.Split(" ")[0], float.Parse(t.Split(" ")[1], CultureInfo.InvariantCulture)));
+            }
         }
 
         #region Brahcnes
@@ -166,7 +188,7 @@ namespace DialogEditor
             UpdateStepsUi();
             UpdateStep();
         }
-        
+
         /// <summary>
         /// Удаление выбранного шага
         /// </summary>
@@ -178,6 +200,7 @@ namespace DialogEditor
                 if (int.Parse(_selectedStep.StepName) < int.Parse(step.StepName))
                     step.StepName = (int.Parse(step.StepName) - 1).ToString();
             }
+
             _selectedBranch.DialogSteps.Remove(_selectedStep);
             buttonLastStep_Click(sender, e);
             UpdateStepsUi();
@@ -234,9 +257,6 @@ namespace DialogEditor
 
         private void checkMoreRead_CheckedChanged(object sender, EventArgs e) =>
             _selectedDialog.MoreRead = checkMoreRead.Checked;
-
-        private void checkBoxCursedText_CheckedChanged(object sender, EventArgs e) =>
-            _selectedStep.CursedText = checkBoxCursedText.Checked;
 
         /// <summary>
         /// Меняем стиль диалога
@@ -326,6 +346,23 @@ namespace DialogEditor
             comboBoxMood.Text = _selectedStep.IconMoodSelected.ToString();
             textBoxRu.Text = _selectedStep.DialogText.ru;
             textBoxEn.Text = _selectedStep.DialogText.en;
+            if (_selectedStep.FastChanges != null)
+            {
+                checkBoxCursedText.Checked = _selectedStep.CursedText;
+                textBoxNewDialog.Text = _selectedStep.FastChanges.activateDialog;
+                textBoxNewLocation.Text = _selectedStep.FastChanges.moveToLocation;
+                textBoxLocationSpawn.Text = _selectedStep.FastChanges.moveToLocationSpawn;
+                checkBoxBlockMove.Checked = _selectedStep.FastChanges.blockPlayerMove;
+                checkBoxBlockMoveZ.Checked = _selectedStep.FastChanges.blockPlayerMoveZ;
+                checkBoxBlockAllMenu.Checked = _selectedStep.FastChanges.lockAllMenu;
+                foreach (var t in _selectedStep.FastChanges.addItem)
+                    textBoxAddItem.Text += t + "\n";
+                foreach (var t in _selectedStep.FastChanges.addNote)
+                    textBoxAddNote.Text += t + "\n";
+                foreach (var t in _selectedStep.FastChanges.changeRelationships)
+                    textBoxChangeRelationship.Text = t.npcName + " " + t.valueChange;
+            }
+
             dialogStepManage.Visible = true;
             dialogStepPreference.Visible = false;
         }
@@ -371,7 +408,7 @@ namespace DialogEditor
                     break;
                 }
             }
-            
+
             using (var fs = new FileStream(PathToFile, FileMode.Create)) // Открываем файл для записи
                 JsonSerializer.Serialize(fs, dialogCollection);
             this.Close();
