@@ -50,7 +50,7 @@ namespace DialogEditor
                 // Ищем
                 foreach (Dialog dialog in dialogCollection.Dialogs)
                 {
-                    if (dialog.NameDialog == LoadedDialog)
+                    if (dialog.nameDialog == LoadedDialog)
                     {
                         _selectedDialog = dialog;
                         break;
@@ -61,7 +61,7 @@ namespace DialogEditor
                 if (_selectedDialog == null)
                 {
                     _selectedDialog = new Dialog(LoadedDialog);
-                    _selectedDialog.StepBranches.Add(new StepBranch("Main"));
+                    _selectedDialog.stepBranches.Add(new StepBranch("Main"));
                 }
             }
 
@@ -99,7 +99,7 @@ namespace DialogEditor
 
             for (int i = 0; i < dialogCollection.Dialogs.Count; i++)
             {
-                if (dialogCollection.Dialogs[i].NameDialog == _selectedDialog.NameDialog)
+                if (dialogCollection.Dialogs[i].nameDialog == _selectedDialog.nameDialog)
                 {
                     dialogCollection.Dialogs[i] = _selectedDialog;
                     copyFind = true;
@@ -120,30 +120,32 @@ namespace DialogEditor
         /// </summary>
         private void buttonSaveDialog_Click(object sender, EventArgs e)
         {
-            _selectedStep.TotalNpcName = textBoxNpcName.Text;
-            if (_selectedStep.TotalNpcName == "")
-                _selectedStep.TotalNpcName = "nothing";
-            _selectedStep.DialogText = new LanguageSetting(textBoxRu.Text, textBoxEn.Text);
-            _selectedStep.IconMoodSelected = (IconMood)comboBoxMood.SelectedIndex;
-            if (_selectedStep.FastChanges == null)
-                _selectedStep.FastChanges = new FastChangesController();
-            _selectedStep.CursedText = checkBoxCursedText.Checked;
-            _selectedStep.FastChanges.activateDialog = textBoxNewDialog.Text;
-            _selectedStep.FastChanges.moveToLocation = textBoxNewLocation.Text;
-            _selectedStep.FastChanges.moveToLocationSpawn = textBoxLocationSpawn.Text;
-            _selectedStep.FastChanges.blockPlayerMove = checkBoxBlockMove.Checked;
-            _selectedStep.FastChanges.blockPlayerMoveZ = checkBoxBlockMoveZ.Checked;
-            _selectedStep.FastChanges.lockAllMenu = checkBoxBlockAllMenu.Checked;
-            _selectedStep.FastChanges.addItem = new List<string>();
-            _selectedStep.FastChanges.addNote = new List<string>();
-            _selectedStep.FastChanges.changeRelationships = new List<FastChangesController.ChangeRelationship>();
+            _selectedStep.totalNpcName = textBoxNpcName.Text;
+            if (_selectedStep.totalNpcName == "")
+                _selectedStep.totalNpcName = "nothing";
+            _selectedStep.dialogText = new LanguageSetting(textBoxRu.Text, textBoxEn.Text);
+            _selectedStep.iconMoodSelected = (IconMood)comboBoxMood.SelectedIndex;
+            _selectedStep.bigPictureName = textBoxBigPicture.Text;
+            
+            if (_selectedStep.fastChanges == null)
+                _selectedStep.fastChanges = new FastChangesController();
+            _selectedStep.cursedText = checkBoxCursedText.Checked;
+            _selectedStep.fastChanges.activateDialog = textBoxNewDialog.Text;
+            _selectedStep.fastChanges.moveToLocation = textBoxNewLocation.Text;
+            _selectedStep.fastChanges.moveToLocationSpawn = textBoxLocationSpawn.Text;
+            _selectedStep.fastChanges.blockPlayerMove = checkBoxBlockMove.Checked;
+            _selectedStep.fastChanges.blockPlayerMoveZ = checkBoxBlockMoveZ.Checked;
+            _selectedStep.fastChanges.lockAllMenu = checkBoxBlockAllMenu.Checked;
+            _selectedStep.fastChanges.addItem = new List<string>();
+            _selectedStep.fastChanges.addNote = new List<string>();
+            _selectedStep.fastChanges.changeRelationships = new List<FastChangesController.ChangeRelationship>();
             foreach (var t in textBoxAddItem.Lines)
-                _selectedStep.FastChanges.addItem.Add(t);
+                _selectedStep.fastChanges.addItem.Add(t);
             foreach (var t in textBoxAddNote.Lines)
-                _selectedStep.FastChanges.addNote.Add(t);
+                _selectedStep.fastChanges.addNote.Add(t);
             foreach (var t in textBoxChangeRelationship.Lines)
             {
-                _selectedStep.FastChanges.changeRelationships.Add(
+                _selectedStep.fastChanges.changeRelationships.Add(
                     new FastChangesController.ChangeRelationship(t.Split(" ")[0], float.Parse(t.Split(" ")[1], CultureInfo.InvariantCulture)));
             }
         }
@@ -157,7 +159,7 @@ namespace DialogEditor
         {
             if (!comboBoxSelectedBranch.Items.Contains(comboBoxSelectedBranch.Text))
             {
-                _selectedDialog.StepBranches.Add(new StepBranch(comboBoxSelectedBranch.Text));
+                _selectedDialog.stepBranches.Add(new StepBranch(comboBoxSelectedBranch.Text));
                 UpdateBranchesUi();
                 UpdateStepsUi();
             }
@@ -183,8 +185,8 @@ namespace DialogEditor
         private void buttonAddStep_Click(object sender, EventArgs e)
         {
             _selectedStep = new DialogStep(comboBoxSelectedStep.Items.Count.ToString());
-            _selectedStep.DialogText = new LanguageSetting();
-            _selectedBranch.DialogSteps.Add(_selectedStep);
+            _selectedStep.dialogText = new LanguageSetting();
+            _selectedBranch.dialogSteps.Add(_selectedStep);
             UpdateStepsUi();
             UpdateStep();
         }
@@ -195,13 +197,13 @@ namespace DialogEditor
         private void buttonRemoveStep_Click(object sender, EventArgs e)
         {
             // Меняем индекс(имя)
-            foreach (DialogStep step in _selectedBranch.DialogSteps)
+            foreach (DialogStep step in _selectedBranch.dialogSteps)
             {
-                if (int.Parse(_selectedStep.StepName) < int.Parse(step.StepName))
-                    step.StepName = (int.Parse(step.StepName) - 1).ToString();
+                if (int.Parse(_selectedStep.stepName) < int.Parse(step.stepName))
+                    step.stepName = (int.Parse(step.stepName) - 1).ToString();
             }
 
-            _selectedBranch.DialogSteps.Remove(_selectedStep);
+            _selectedBranch.dialogSteps.Remove(_selectedStep);
             buttonLastStep_Click(sender, e);
             UpdateStepsUi();
             UpdateStep();
@@ -250,19 +252,19 @@ namespace DialogEditor
         #region ParamsToDialog
 
         private void checkCanMove_CheckedChanged(object sender, EventArgs e) =>
-            _selectedDialog.CanMove = checkCanMove.Checked;
+            _selectedDialog.canMove = checkCanMove.Checked;
 
         private void checkCanInter_CheckedChanged(object sender, EventArgs e) =>
-            _selectedDialog.CanInter = checkCanInter.Checked;
+            _selectedDialog.canInter = checkCanInter.Checked;
 
         private void checkMoreRead_CheckedChanged(object sender, EventArgs e) =>
-            _selectedDialog.MoreRead = checkMoreRead.Checked;
+            _selectedDialog.moreRead = checkMoreRead.Checked;
 
         /// <summary>
         /// Меняем стиль диалога
         /// </summary>
         private void dialogStyles_SelectedIndexChanged(object sender, EventArgs e) =>
-            _selectedDialog.StyleOfDialog = (Dialog.DialogStyle)dialogStyles.SelectedIndex;
+            _selectedDialog.styleOfDialog = (Dialog.DialogStyle)dialogStyles.SelectedIndex;
 
         #endregion
 
@@ -275,9 +277,9 @@ namespace DialogEditor
         {
             pagePreference.Visible = true;
             pageSteps.Visible = false;
-            checkCanMove.Checked = _selectedDialog.CanMove;
-            checkCanInter.Checked = _selectedDialog.CanInter;
-            checkMoreRead.Checked = _selectedDialog.MoreRead;
+            checkCanMove.Checked = _selectedDialog.canMove;
+            checkCanInter.Checked = _selectedDialog.canInter;
+            checkMoreRead.Checked = _selectedDialog.moreRead;
         }
 
         private void ManagePagesStep(bool stepManagePage, bool stepPreferencePage)
@@ -293,8 +295,8 @@ namespace DialogEditor
         {
             pagePreference.Visible = false;
             pageSteps.Visible = true;
-            _selectedBranch = _selectedDialog.StepBranches[0];
-            comboBoxSelectedBranch.Text = _selectedBranch.BranchName;
+            _selectedBranch = _selectedDialog.stepBranches[0];
+            comboBoxSelectedBranch.Text = _selectedBranch.branchName;
             ManagePagesStep(true, false);
             UpdateBranchesUi();
             UpdateStepsUi();
@@ -320,8 +322,8 @@ namespace DialogEditor
         private void UpdateBranchesUi()
         {
             comboBoxSelectedBranch.Items.Clear();
-            foreach (StepBranch branch in _selectedDialog.StepBranches)
-                comboBoxSelectedBranch.Items.Add(branch.BranchName);
+            foreach (StepBranch branch in _selectedDialog.stepBranches)
+                comboBoxSelectedBranch.Items.Add(branch.branchName);
         }
 
         /// <summary>
@@ -330,8 +332,8 @@ namespace DialogEditor
         private void UpdateStepsUi()
         {
             comboBoxSelectedStep.Items.Clear();
-            foreach (DialogStep step in _selectedBranch.DialogSteps)
-                comboBoxSelectedStep.Items.Add(step.StepName);
+            foreach (DialogStep step in _selectedBranch.dialogSteps)
+                comboBoxSelectedStep.Items.Add(step.stepName);
         }
 
         /// <summary>
@@ -339,27 +341,28 @@ namespace DialogEditor
         /// </summary>
         private void UpdateStep()
         {
-            comboBoxSelectedStep.Text = _selectedStep.StepName;
-            textBoxNpcName.Text = _selectedStep.TotalNpcName;
+            comboBoxSelectedStep.Text = _selectedStep.stepName;
+            textBoxNpcName.Text = _selectedStep.totalNpcName;
             if (textBoxNpcName.Text == "nothing")
                 textBoxNpcName.Text = "";
-            comboBoxMood.Text = _selectedStep.IconMoodSelected.ToString();
-            textBoxRu.Text = _selectedStep.DialogText.ru;
-            textBoxEn.Text = _selectedStep.DialogText.en;
-            if (_selectedStep.FastChanges != null)
+            comboBoxMood.Text = _selectedStep.iconMoodSelected.ToString();
+            textBoxRu.Text = _selectedStep.dialogText.ru;
+            textBoxEn.Text = _selectedStep.dialogText.en;
+            textBoxBigPicture.Text = _selectedStep.bigPictureName;
+            if (_selectedStep.fastChanges != null)
             {
-                checkBoxCursedText.Checked = _selectedStep.CursedText;
-                textBoxNewDialog.Text = _selectedStep.FastChanges.activateDialog;
-                textBoxNewLocation.Text = _selectedStep.FastChanges.moveToLocation;
-                textBoxLocationSpawn.Text = _selectedStep.FastChanges.moveToLocationSpawn;
-                checkBoxBlockMove.Checked = _selectedStep.FastChanges.blockPlayerMove;
-                checkBoxBlockMoveZ.Checked = _selectedStep.FastChanges.blockPlayerMoveZ;
-                checkBoxBlockAllMenu.Checked = _selectedStep.FastChanges.lockAllMenu;
-                foreach (var t in _selectedStep.FastChanges.addItem)
+                checkBoxCursedText.Checked = _selectedStep.cursedText;
+                textBoxNewDialog.Text = _selectedStep.fastChanges.activateDialog;
+                textBoxNewLocation.Text = _selectedStep.fastChanges.moveToLocation;
+                textBoxLocationSpawn.Text = _selectedStep.fastChanges.moveToLocationSpawn;
+                checkBoxBlockMove.Checked = _selectedStep.fastChanges.blockPlayerMove;
+                checkBoxBlockMoveZ.Checked = _selectedStep.fastChanges.blockPlayerMoveZ;
+                checkBoxBlockAllMenu.Checked = _selectedStep.fastChanges.lockAllMenu;
+                foreach (var t in _selectedStep.fastChanges.addItem)
                     textBoxAddItem.Text += t + "\n";
-                foreach (var t in _selectedStep.FastChanges.addNote)
+                foreach (var t in _selectedStep.fastChanges.addNote)
                     textBoxAddNote.Text += t + "\n";
-                foreach (var t in _selectedStep.FastChanges.changeRelationships)
+                foreach (var t in _selectedStep.fastChanges.changeRelationships)
                     textBoxChangeRelationship.Text = t.npcName + " " + t.valueChange;
             }
 
@@ -372,12 +375,12 @@ namespace DialogEditor
         /// </summary>
         private void AutoFill()
         {
-            labelDialog.Text = _selectedDialog.NameDialog;
+            labelDialog.Text = _selectedDialog.nameDialog;
             // Стили
             dialogStyles.Items.Add("Main");
             dialogStyles.Items.Add("SubMain");
             dialogStyles.Items.Add("BigPicture");
-            dialogStyles.Text = dialogStyles.Items[(int)_selectedDialog.StyleOfDialog].ToString();
+            dialogStyles.Text = dialogStyles.Items[(int)_selectedDialog.styleOfDialog].ToString();
         }
 
         #endregion
@@ -402,7 +405,7 @@ namespace DialogEditor
 
             for (int i = 0; i < dialogCollection.Dialogs.Count; i++)
             {
-                if (dialogCollection.Dialogs[i].NameDialog == _selectedDialog.NameDialog)
+                if (dialogCollection.Dialogs[i].nameDialog == _selectedDialog.nameDialog)
                 {
                     dialogCollection.Dialogs.Remove(dialogCollection.Dialogs[i]);
                     break;

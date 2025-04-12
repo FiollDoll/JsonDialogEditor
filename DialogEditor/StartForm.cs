@@ -23,7 +23,7 @@ public partial class StartForm : Form
         {
             DialogCollection dialogCollection = JsonSerializer.Deserialize<DialogCollection>(fs);
             foreach (Dialog dialog in dialogCollection.Dialogs)
-                comboBox1.Items.Add(dialog.NameDialog);
+                comboBox1.Items.Add(dialog.nameDialog);
         }
     }
     

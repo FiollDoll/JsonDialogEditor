@@ -12,18 +12,19 @@ public class DialogCollection
 
 public class Dialog
 {
-    public string NameDialog { get; set; }
-    public bool Read { get; set; }
-    public DialogStyle StyleOfDialog { get; set; }
-    public List<StepBranch> StepBranches { get; set; } = new List<StepBranch>();
-    public BigPicture[] BigPicturesPresets { get; set; } = new BigPicture[0];
-    public bool MoreRead { get; set; }
-    public bool CanMove { get; set; }
-    public bool CanInter { get; set; }
-    public float MainPanelStartDelay { get; set; }
-    public FastChangesController FastChangesController { get; set; }
-    public bool DarkAfterEnd { get; set; }
-    public int ActivateCutsceneStepAfterEnd { get; set; } = -1;
+    // Всё с маленьких букв для лучшего импорта
+    public string nameDialog { get; set; }
+    public bool read { get; set; }
+    public DialogStyle styleOfDialog { get; set; }
+    public List<StepBranch> stepBranches { get; set; } = new List<StepBranch>();
+    public BigPicture[] bigPicturesPresets { get; set; } = new BigPicture[0];
+    public bool moreRead { get; set; }
+    public bool canMove { get; set; }
+    public bool canInter { get; set; }
+    public float mainPanelStartDelay { get; set; }
+    public FastChangesController fastChangesController { get; set; }
+    public bool darkAfterEnd { get; set; }
+    public int activateCutsceneStepAfterEnd { get; set; } = -1;
 
     public enum DialogStyle
     {
@@ -38,14 +39,14 @@ public class Dialog
 
     public Dialog(string nameDialog)
     {
-        NameDialog = nameDialog;
+        this.nameDialog = nameDialog;
     }
 
     public StepBranch GetBranchByName(string name)
     {
-        foreach (StepBranch branch in StepBranches)
+        foreach (StepBranch branch in stepBranches)
         {
-            if (branch.BranchName == name)
+            if (branch.branchName == name)
                 return branch;
         }
 
@@ -55,9 +56,9 @@ public class Dialog
 
 public class StepBranch
 {
-    public string BranchName { get; set; }
-    public List<DialogStep> DialogSteps { get; set; } = new List<DialogStep>();
-    public List<DialogChoice> Choices { get; set; } = new List<DialogChoice>();
+    public string branchName { get; set; }
+    public List<DialogStep> dialogSteps { get; set; } = new List<DialogStep>();
+    public List<DialogChoice> choices { get; set; } = new List<DialogChoice>();
 
     public StepBranch()
     {
@@ -65,14 +66,14 @@ public class StepBranch
 
     public StepBranch(string name)
     {
-        BranchName = name;
+        branchName = name;
     }
 
     public DialogStep GetDialogStepByName(string name)
     {
-        foreach (DialogStep step in DialogSteps)
+        foreach (DialogStep step in dialogSteps)
         {
-            if (step.StepName == name)
+            if (step.stepName == name)
                 return step;
         }
 
@@ -82,15 +83,15 @@ public class StepBranch
 
 public class DialogStep
 {
-    public string StepName { get; set; }
-    public string TotalNpcName { get; set; }
-    public LanguageSetting DialogText { get; set; }
-    public IconMood IconMoodSelected { get; set; }
-    public string BigPictureName { get; set; }
-    public bool CursedText { get; set; }
-    public float DelayAfterNext { get; set; }
-    public int ActivateCutsceneStep { get; set; } = -1;
-    public FastChangesController FastChanges { get; set; }
+    public string stepName { get; set; }
+    public string totalNpcName { get; set; }
+    public LanguageSetting dialogText { get; set; }
+    public IconMood iconMoodSelected { get; set; }
+    public string bigPictureName { get; set; }
+    public bool cursedText { get; set; }
+    public float delayAfterNext { get; set; }
+    public int activateCutsceneStep { get; set; } = -1;
+    public FastChangesController fastChanges { get; set; }
 
     public DialogStep()
     {
@@ -98,21 +99,21 @@ public class DialogStep
 
     public DialogStep(string name)
     {
-        StepName = name;
+        stepName = name;
     }
 }
 
 public class DialogChoice
 {
-    public string NameNewBranch { get; set; }
-    public bool Read { get; set; }
-    public LanguageSetting TextQuestion { get; set; }
-    public bool MoreRead { get; set; }
+    public string nameNewBranch { get; set; }
+    public bool read { get; set; }
+    public LanguageSetting textQuestion { get; set; }
+    public bool moreRead { get; set; }
 }
 
 public class BigPicture
 {
-    public string BigPictureName { get; set; }
+    public string bigPictureName { get; set; }
 }
 
 public enum IconMood

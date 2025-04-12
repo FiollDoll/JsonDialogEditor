@@ -55,6 +55,12 @@ partial class EditorForm
         buttonAddBranch = new System.Windows.Forms.Button();
         comboBoxSelectedBranch = new System.Windows.Forms.ComboBox();
         dialogStepPreference = new System.Windows.Forms.GroupBox();
+        label12 = new System.Windows.Forms.Label();
+        textBoxChangeRelationship = new System.Windows.Forms.TextBox();
+        label11 = new System.Windows.Forms.Label();
+        textBoxAddNote = new System.Windows.Forms.TextBox();
+        label10 = new System.Windows.Forms.Label();
+        textBoxAddItem = new System.Windows.Forms.TextBox();
         checkBoxBlockMoveZ = new System.Windows.Forms.CheckBox();
         checkBoxBlockMove = new System.Windows.Forms.CheckBox();
         checkBoxBlockAllMenu = new System.Windows.Forms.CheckBox();
@@ -77,12 +83,8 @@ partial class EditorForm
         buttonPageFirst = new System.Windows.Forms.Button();
         buttonPageDialog = new System.Windows.Forms.Button();
         buttonDeleteDialog = new System.Windows.Forms.Button();
-        label10 = new System.Windows.Forms.Label();
-        textBoxAddItem = new System.Windows.Forms.TextBox();
-        label11 = new System.Windows.Forms.Label();
-        textBoxAddNote = new System.Windows.Forms.TextBox();
-        label12 = new System.Windows.Forms.Label();
-        textBoxChangeRelationship = new System.Windows.Forms.TextBox();
+        label13 = new System.Windows.Forms.Label();
+        textBoxBigPicture = new System.Windows.Forms.TextBox();
         pagePreference.SuspendLayout();
         pageSteps.SuspendLayout();
         dialogStepPreference.SuspendLayout();
@@ -197,8 +199,8 @@ partial class EditorForm
         pageSteps.Controls.Add(comboBoxSelectedStep);
         pageSteps.Controls.Add(buttonAddBranch);
         pageSteps.Controls.Add(comboBoxSelectedBranch);
-        pageSteps.Controls.Add(dialogStepPreference);
         pageSteps.Controls.Add(dialogStepManage);
+        pageSteps.Controls.Add(dialogStepPreference);
         pageSteps.Location = new System.Drawing.Point(65, 85);
         pageSteps.Name = "pageSteps";
         pageSteps.Size = new System.Drawing.Size(697, 306);
@@ -354,6 +356,60 @@ partial class EditorForm
         dialogStepPreference.TabIndex = 6;
         dialogStepPreference.TabStop = false;
         // 
+        // label12
+        // 
+        label12.Location = new System.Drawing.Point(505, 120);
+        label12.Name = "label12";
+        label12.Size = new System.Drawing.Size(97, 50);
+        label12.TabIndex = 15;
+        label12.Text = "Изменить отношения";
+        label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
+        // textBoxChangeRelationship
+        // 
+        textBoxChangeRelationship.Location = new System.Drawing.Point(391, 119);
+        textBoxChangeRelationship.Multiline = true;
+        textBoxChangeRelationship.Name = "textBoxChangeRelationship";
+        textBoxChangeRelationship.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+        textBoxChangeRelationship.Size = new System.Drawing.Size(108, 51);
+        textBoxChangeRelationship.TabIndex = 14;
+        // 
+        // label11
+        // 
+        label11.Location = new System.Drawing.Point(314, 120);
+        label11.Name = "label11";
+        label11.Size = new System.Drawing.Size(97, 50);
+        label11.TabIndex = 13;
+        label11.Text = "Добавить записку";
+        label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
+        // textBoxAddNote
+        // 
+        textBoxAddNote.Location = new System.Drawing.Point(200, 119);
+        textBoxAddNote.Multiline = true;
+        textBoxAddNote.Name = "textBoxAddNote";
+        textBoxAddNote.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+        textBoxAddNote.Size = new System.Drawing.Size(108, 51);
+        textBoxAddNote.TabIndex = 12;
+        // 
+        // label10
+        // 
+        label10.Location = new System.Drawing.Point(132, 120);
+        label10.Name = "label10";
+        label10.Size = new System.Drawing.Size(97, 50);
+        label10.TabIndex = 11;
+        label10.Text = "Добавить предмет";
+        label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
+        // textBoxAddItem
+        // 
+        textBoxAddItem.Location = new System.Drawing.Point(18, 119);
+        textBoxAddItem.Multiline = true;
+        textBoxAddItem.Name = "textBoxAddItem";
+        textBoxAddItem.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+        textBoxAddItem.Size = new System.Drawing.Size(108, 51);
+        textBoxAddItem.TabIndex = 10;
+        // 
         // checkBoxBlockMoveZ
         // 
         checkBoxBlockMoveZ.Location = new System.Drawing.Point(18, 94);
@@ -443,6 +499,8 @@ partial class EditorForm
         // 
         // dialogStepManage
         // 
+        dialogStepManage.Controls.Add(label13);
+        dialogStepManage.Controls.Add(textBoxBigPicture);
         dialogStepManage.Controls.Add(comboBoxMood);
         dialogStepManage.Controls.Add(label3);
         dialogStepManage.Controls.Add(label6);
@@ -566,59 +624,21 @@ partial class EditorForm
         buttonDeleteDialog.UseVisualStyleBackColor = false;
         buttonDeleteDialog.Click += buttonDeleteDialog_Click;
         // 
-        // label10
+        // label13
         // 
-        label10.Location = new System.Drawing.Point(132, 120);
-        label10.Name = "label10";
-        label10.Size = new System.Drawing.Size(97, 50);
-        label10.TabIndex = 11;
-        label10.Text = "Добавить предмет";
-        label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        label13.Location = new System.Drawing.Point(8, 175);
+        label13.Name = "label13";
+        label13.Size = new System.Drawing.Size(68, 22);
+        label13.TabIndex = 10;
+        label13.Text = "Big picture";
+        label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
         // 
-        // textBoxAddItem
+        // textBoxBigPicture
         // 
-        textBoxAddItem.Location = new System.Drawing.Point(18, 119);
-        textBoxAddItem.Multiline = true;
-        textBoxAddItem.Name = "textBoxAddItem";
-        textBoxAddItem.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-        textBoxAddItem.Size = new System.Drawing.Size(108, 51);
-        textBoxAddItem.TabIndex = 10;
-        // 
-        // label11
-        // 
-        label11.Location = new System.Drawing.Point(314, 120);
-        label11.Name = "label11";
-        label11.Size = new System.Drawing.Size(97, 50);
-        label11.TabIndex = 13;
-        label11.Text = "Добавить записку";
-        label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-        // 
-        // textBoxAddNote
-        // 
-        textBoxAddNote.Location = new System.Drawing.Point(200, 119);
-        textBoxAddNote.Multiline = true;
-        textBoxAddNote.Name = "textBoxAddNote";
-        textBoxAddNote.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-        textBoxAddNote.Size = new System.Drawing.Size(108, 51);
-        textBoxAddNote.TabIndex = 12;
-        // 
-        // label12
-        // 
-        label12.Location = new System.Drawing.Point(505, 120);
-        label12.Name = "label12";
-        label12.Size = new System.Drawing.Size(97, 50);
-        label12.TabIndex = 15;
-        label12.Text = "Изменить отношения";
-        label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-        // 
-        // textBoxChangeRelationship
-        // 
-        textBoxChangeRelationship.Location = new System.Drawing.Point(391, 119);
-        textBoxChangeRelationship.Multiline = true;
-        textBoxChangeRelationship.Name = "textBoxChangeRelationship";
-        textBoxChangeRelationship.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-        textBoxChangeRelationship.Size = new System.Drawing.Size(108, 51);
-        textBoxChangeRelationship.TabIndex = 14;
+        textBoxBigPicture.Location = new System.Drawing.Point(82, 174);
+        textBoxBigPicture.Name = "textBoxBigPicture";
+        textBoxBigPicture.Size = new System.Drawing.Size(147, 23);
+        textBoxBigPicture.TabIndex = 9;
         // 
         // EditorForm
         // 
@@ -646,6 +666,9 @@ partial class EditorForm
         dialogStepManage.PerformLayout();
         ResumeLayout(false);
     }
+
+    private System.Windows.Forms.Label label13;
+    private System.Windows.Forms.TextBox textBoxBigPicture;
 
     private System.Windows.Forms.Label label11;
     private System.Windows.Forms.TextBox textBoxAddNote;
