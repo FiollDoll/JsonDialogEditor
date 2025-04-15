@@ -167,7 +167,6 @@ namespace DialogEditor
             {
                 _selectedDialog.stepBranches.Add(new StepBranch(comboBoxSelectedBranch.Text));
                 UpdateBranchesUi();
-                UpdateStepsUi();
             }
             else
                 MessageBox.Show("Такая ветка уже существует");
@@ -179,6 +178,9 @@ namespace DialogEditor
         private void comboBoxSelectedBranch_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedBranch = _selectedDialog.GetBranchByName(comboBoxSelectedBranch.Text);
+            UpdateBranchesUi();
+            comboBoxSelectedStep.Text = "";
+            comboBoxChoice.Text = "";
         }
 
         #endregion
@@ -262,8 +264,10 @@ namespace DialogEditor
             _selectedChoice = new DialogChoice(_selectedBranch.choices.Count.ToString());
             _selectedChoice.textQuestion = new LanguageSetting();
             _selectedBranch.choices.Add(_selectedChoice);
+            comboBoxChoice.Text = _selectedChoice.choiceName;
             UpdateBranchesUi();
             UpdateChoicesUi();
+            UpdateChoices();
         }
 
         private void comboBoxChoice_SelectedIndexChanged(object sender, EventArgs e)
@@ -370,6 +374,9 @@ namespace DialogEditor
                 comboBoxSelectedBranch.Items.Add(branch.branchName);
                 comboBoxBranchesToChoice.Items.Add(branch.branchName);
             }
+            
+            UpdateStepsUi();
+            UpdateChoicesUi();
         }
 
         /// <summary>
@@ -380,6 +387,16 @@ namespace DialogEditor
             comboBoxSelectedStep.Items.Clear();
             foreach (DialogStep step in _selectedBranch.dialogSteps)
                 comboBoxSelectedStep.Items.Add(step.stepName);
+        }
+        
+        /// <summary>
+        /// Обновляем список выборов в ветке
+        /// </summary>
+        private void UpdateChoicesUi()
+        {
+            comboBoxChoice.Items.Clear();
+            foreach (DialogChoice choice in _selectedBranch.choices)
+                comboBoxChoice.Items.Add(choice.choiceName);
         }
 
         /// <summary>
@@ -415,13 +432,6 @@ namespace DialogEditor
             dialogStepManage.Visible = true;
             dialogStepPreference.Visible = false;
             pageChoice.Visible = false;
-        }
-
-        private void UpdateChoicesUi()
-        {
-            comboBoxChoice.Items.Clear();
-            foreach (DialogChoice choice in _selectedBranch.choices)
-                comboBoxChoice.Items.Add(choice.choiceName);
         }
 
         private void UpdateChoices()
