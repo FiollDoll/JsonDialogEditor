@@ -21,6 +21,11 @@ namespace DialogEditor
         private DialogStep _selectedStep;
 
         /// <summary>
+        /// Выбранный выбор
+        /// </summary>
+        private DialogChoice _selectedChoice;
+
+        /// <summary>
         /// Название диалога. Происходит из StartForm
         /// </summary>
         public string LoadedDialog;
@@ -126,7 +131,7 @@ namespace DialogEditor
             _selectedStep.dialogText = new LanguageSetting(textBoxRu.Text, textBoxEn.Text);
             _selectedStep.iconMoodSelected = (IconMood)comboBoxMood.SelectedIndex;
             _selectedStep.bigPictureName = textBoxBigPicture.Text;
-            
+
             if (_selectedStep.fastChanges == null)
                 _selectedStep.fastChanges = new FastChangesController();
             _selectedStep.cursedText = checkBoxCursedText.Checked;
@@ -146,7 +151,8 @@ namespace DialogEditor
             foreach (var t in textBoxChangeRelationship.Lines)
             {
                 _selectedStep.fastChanges.changeRelationships.Add(
-                    new FastChangesController.ChangeRelationship(t.Split(" ")[0], float.Parse(t.Split(" ")[1], CultureInfo.InvariantCulture)));
+                    new FastChangesController.ChangeRelationship(t.Split(" ")[0],
+                        float.Parse(t.Split(" ")[1], CultureInfo.InvariantCulture)));
             }
         }
 
@@ -249,6 +255,36 @@ namespace DialogEditor
 
         #endregion
 
+        #region DialogChoices
+
+        private void buttonChoiceAdd_Click(object sender, EventArgs e)
+        {
+            _selectedChoice = new DialogChoice(_selectedBranch.choices.Count.ToString());
+            _selectedChoice.textQuestion = new LanguageSetting();
+            _selectedBranch.choices.Add(_selectedChoice);
+            UpdateBranchesUi();
+            UpdateChoicesUi();
+        }
+
+        private void comboBoxChoice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _selectedChoice = _selectedBranch.GetDialogChoiceByName(comboBoxChoice.Text);
+            UpdateChoices();
+        }
+
+        private void buttonSaveChoice_Click_1(object sender, EventArgs e)
+        {
+            if (_selectedChoice != null)
+            {
+                _selectedChoice.textQuestion.ru = textBoxQuestionRu.Text;
+                _selectedChoice.textQuestion.en = textBoxQuestionEn.Text;
+                _selectedChoice.nameNewBranch = comboBoxBranchesToChoice.Text;
+                _selectedChoice.moreRead = checkBoxChoiceMoreRead.Checked;
+            }
+        }
+
+        #endregion
+
         #region ParamsToDialog
 
         private void checkCanMove_CheckedChanged(object sender, EventArgs e) =>
@@ -282,10 +318,11 @@ namespace DialogEditor
             checkMoreRead.Checked = _selectedDialog.moreRead;
         }
 
-        private void ManagePagesStep(bool stepManagePage, bool stepPreferencePage)
+        private void ManagePagesStep(bool stepManagePage, bool stepPreferencePage, bool stepChoicePage)
         {
             dialogStepManage.Visible = stepManagePage;
             dialogStepPreference.Visible = stepPreferencePage;
+            pageChoice.Visible = stepChoicePage;
         }
 
         /// <summary>
@@ -297,7 +334,7 @@ namespace DialogEditor
             pageSteps.Visible = true;
             _selectedBranch = _selectedDialog.stepBranches[0];
             comboBoxSelectedBranch.Text = _selectedBranch.branchName;
-            ManagePagesStep(true, false);
+            ManagePagesStep(true, false, false);
             UpdateBranchesUi();
             UpdateStepsUi();
         }
@@ -305,12 +342,17 @@ namespace DialogEditor
         /// <summary>
         /// Переключаем страницу в шагах диалогов на основу
         /// </summary>
-        private void buttonDialogStep_Click(object sender, EventArgs e) => ManagePagesStep(true, false);
+        private void buttonDialogStep_Click(object sender, EventArgs e) => ManagePagesStep(true, false, false);
+
+        /// <summary>
+        /// Переключаем страницу в шагах диалогов на выбор
+        /// </summary>
+        private void buttonChoice_Click(object sender, EventArgs e) => ManagePagesStep(false, false, true);
 
         /// <summary>
         /// Переключаем страницу в шагах диалогов на настройки
         /// </summary>
-        private void buttonDialogStepPref_Click(object sender, EventArgs e) => ManagePagesStep(false, true);
+        private void buttonDialogStepPref_Click(object sender, EventArgs e) => ManagePagesStep(false, true, false);
 
         #endregion
 
@@ -322,8 +364,12 @@ namespace DialogEditor
         private void UpdateBranchesUi()
         {
             comboBoxSelectedBranch.Items.Clear();
+            comboBoxBranchesToChoice.Items.Clear();
             foreach (StepBranch branch in _selectedDialog.stepBranches)
+            {
                 comboBoxSelectedBranch.Items.Add(branch.branchName);
+                comboBoxBranchesToChoice.Items.Add(branch.branchName);
+            }
         }
 
         /// <summary>
@@ -368,6 +414,25 @@ namespace DialogEditor
 
             dialogStepManage.Visible = true;
             dialogStepPreference.Visible = false;
+            pageChoice.Visible = false;
+        }
+
+        private void UpdateChoicesUi()
+        {
+            comboBoxChoice.Items.Clear();
+            foreach (DialogChoice choice in _selectedBranch.choices)
+                comboBoxChoice.Items.Add(choice.choiceName);
+        }
+
+        private void UpdateChoices()
+        {
+            textBoxQuestionRu.Text = _selectedChoice.textQuestion.ru;
+            textBoxQuestionEn.Text = _selectedChoice.textQuestion.en;
+            checkBoxChoiceMoreRead.Checked = _selectedChoice.moreRead;
+            UpdateBranchesUi();
+            dialogStepManage.Visible = false;
+            dialogStepPreference.Visible = false;
+            pageChoice.Visible = true;
         }
 
         /// <summary>

@@ -79,6 +79,17 @@ public class StepBranch
 
         return null;
     }
+    
+    public DialogChoice GetDialogChoiceByName(string name)
+    {
+        foreach (DialogChoice choice in choices)
+        {
+            if (choice.choiceName == name)
+                return choice;
+        }
+
+        return null;
+    }
 }
 
 public class DialogStep
@@ -105,10 +116,16 @@ public class DialogStep
 
 public class DialogChoice
 {
+    public string choiceName;
     public string nameNewBranch { get; set; }
     public bool read { get; set; }
     public LanguageSetting textQuestion { get; set; }
     public bool moreRead { get; set; }
+
+    public DialogChoice(string nameNewBranch)
+    {
+        choiceName = nameNewBranch;
+    }
 }
 
 public class BigPicture
