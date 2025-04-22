@@ -131,17 +131,16 @@ namespace DialogEditor
             _selectedStep.dialogText = new LanguageSetting(textBoxRu.Text, textBoxEn.Text);
             _selectedStep.iconMoodSelected = (IconMood)comboBoxMood.SelectedIndex;
             _selectedStep.bigPictureName = textBoxBigPicture.Text;
-
+            _selectedStep.activateCutsceneStep = int.Parse(textBoxCutscene.Text);
             if (_selectedStep.fastChanges == null)
                 _selectedStep.fastChanges = new FastChangesController();
             _selectedStep.cursedText = checkBoxCursedText.Checked;
             _selectedStep.fastChanges.activateDialog = textBoxNewDialog.Text;
             _selectedStep.fastChanges.moveToLocation = textBoxNewLocation.Text;
             _selectedStep.fastChanges.moveToLocationSpawn = textBoxLocationSpawn.Text;
-            _selectedStep.fastChanges.blockPlayerMove = checkBoxBlockMove.Checked;
-            _selectedStep.fastChanges.blockPlayerMoveZ = checkBoxBlockMoveZ.Checked;
             _selectedStep.fastChanges.lockAllMenu = checkBoxBlockAllMenu.Checked;
             _selectedStep.fastChanges.addItem = new List<string>();
+            _selectedStep.fastChanges.addNote = new List<string>();
             _selectedStep.fastChanges.addNote = new List<string>();
             _selectedStep.fastChanges.changeRelationships = new List<FastChangesController.ChangeRelationship>();
             foreach (var t in textBoxAddItem.Lines)
@@ -300,6 +299,9 @@ namespace DialogEditor
         private void checkMoreRead_CheckedChanged(object sender, EventArgs e) =>
             _selectedDialog.moreRead = checkMoreRead.Checked;
 
+        private void textBoxDelay_TextChanged(object sender, EventArgs e) =>
+            _selectedDialog.mainPanelStartDelay = float.Parse(textBoxDelay.Text);
+
         /// <summary>
         /// Меняем стиль диалога
         /// </summary>
@@ -320,6 +322,7 @@ namespace DialogEditor
             checkCanMove.Checked = _selectedDialog.canMove;
             checkCanInter.Checked = _selectedDialog.canInter;
             checkMoreRead.Checked = _selectedDialog.moreRead;
+            textBoxDelay.Text = _selectedDialog.mainPanelStartDelay.ToString();
         }
 
         private void ManagePagesStep(bool stepManagePage, bool stepPreferencePage, bool stepChoicePage)
@@ -374,7 +377,7 @@ namespace DialogEditor
                 comboBoxSelectedBranch.Items.Add(branch.branchName);
                 comboBoxBranchesToChoice.Items.Add(branch.branchName);
             }
-            
+
             UpdateStepsUi();
             UpdateChoicesUi();
         }
@@ -388,7 +391,7 @@ namespace DialogEditor
             foreach (DialogStep step in _selectedBranch.dialogSteps)
                 comboBoxSelectedStep.Items.Add(step.stepName);
         }
-        
+
         /// <summary>
         /// Обновляем список выборов в ветке
         /// </summary>
@@ -412,14 +415,13 @@ namespace DialogEditor
             textBoxRu.Text = _selectedStep.dialogText.ru;
             textBoxEn.Text = _selectedStep.dialogText.en;
             textBoxBigPicture.Text = _selectedStep.bigPictureName;
+            textBoxCutscene.Text = _selectedStep.activateCutsceneStep.ToString();
             if (_selectedStep.fastChanges != null)
             {
                 checkBoxCursedText.Checked = _selectedStep.cursedText;
                 textBoxNewDialog.Text = _selectedStep.fastChanges.activateDialog;
                 textBoxNewLocation.Text = _selectedStep.fastChanges.moveToLocation;
                 textBoxLocationSpawn.Text = _selectedStep.fastChanges.moveToLocationSpawn;
-                checkBoxBlockMove.Checked = _selectedStep.fastChanges.blockPlayerMove;
-                checkBoxBlockMoveZ.Checked = _selectedStep.fastChanges.blockPlayerMoveZ;
                 checkBoxBlockAllMenu.Checked = _selectedStep.fastChanges.lockAllMenu;
                 foreach (var t in _selectedStep.fastChanges.addItem)
                     textBoxAddItem.Text += t + "\n";
@@ -474,6 +476,7 @@ namespace DialogEditor
                 catch (JsonException ex)
                 {
                     Console.WriteLine(ex.Message);
+                    throw new System.NotImplementedException();
                     dialogCollection = new DialogCollection();
                 }
             }

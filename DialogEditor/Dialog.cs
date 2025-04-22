@@ -22,9 +22,7 @@ public class Dialog
     public bool canMove { get; set; }
     public bool canInter { get; set; }
     public float mainPanelStartDelay { get; set; }
-    public FastChangesController fastChangesController { get; set; }
     public bool darkAfterEnd { get; set; }
-    public int activateCutsceneStepAfterEnd { get; set; } = -1;
 
     public enum DialogStyle
     {
