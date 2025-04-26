@@ -97,6 +97,7 @@ public class DialogStep
     public LanguageSetting dialogText { get; set; }
     public IconMood iconMoodSelected { get; set; }
     public string bigPictureName { get; set; }
+    public string stepSpeech { get; set; }
     public bool cursedText { get; set; }
     public float delayAfterNext { get; set; }
     public int activateCutsceneStep { get; set; } = -1;

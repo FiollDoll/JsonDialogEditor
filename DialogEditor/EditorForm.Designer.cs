@@ -39,9 +39,9 @@ partial class EditorForm
         pagePreference = new System.Windows.Forms.GroupBox();
         label19 = new System.Windows.Forms.Label();
         textBoxDelay = new System.Windows.Forms.TextBox();
-        checkMoreRead = new System.Windows.Forms.CheckBox();
         checkCanInter = new System.Windows.Forms.CheckBox();
         checkCanMove = new System.Windows.Forms.CheckBox();
+        checkMoreRead = new System.Windows.Forms.CheckBox();
         pageSteps = new System.Windows.Forms.GroupBox();
         buttonChoiceRemove = new System.Windows.Forms.Button();
         label17 = new System.Windows.Forms.Label();
@@ -61,6 +61,17 @@ partial class EditorForm
         comboBoxSelectedStep = new System.Windows.Forms.ComboBox();
         buttonAddBranch = new System.Windows.Forms.Button();
         comboBoxSelectedBranch = new System.Windows.Forms.ComboBox();
+        dialogStepManage = new System.Windows.Forms.GroupBox();
+        label13 = new System.Windows.Forms.Label();
+        textBoxBigPicture = new System.Windows.Forms.TextBox();
+        comboBoxMood = new System.Windows.Forms.ComboBox();
+        label3 = new System.Windows.Forms.Label();
+        label6 = new System.Windows.Forms.Label();
+        label5 = new System.Windows.Forms.Label();
+        textBoxEn = new System.Windows.Forms.TextBox();
+        textBoxRu = new System.Windows.Forms.TextBox();
+        label4 = new System.Windows.Forms.Label();
+        textBoxNpcName = new System.Windows.Forms.TextBox();
         dialogStepPreference = new System.Windows.Forms.GroupBox();
         label18 = new System.Windows.Forms.Label();
         textBoxCutscene = new System.Windows.Forms.TextBox();
@@ -87,25 +98,16 @@ partial class EditorForm
         label14 = new System.Windows.Forms.Label();
         textBoxQuestionEn = new System.Windows.Forms.TextBox();
         textBoxQuestionRu = new System.Windows.Forms.TextBox();
-        dialogStepManage = new System.Windows.Forms.GroupBox();
-        label13 = new System.Windows.Forms.Label();
-        textBoxBigPicture = new System.Windows.Forms.TextBox();
-        comboBoxMood = new System.Windows.Forms.ComboBox();
-        label3 = new System.Windows.Forms.Label();
-        label6 = new System.Windows.Forms.Label();
-        label5 = new System.Windows.Forms.Label();
-        textBoxEn = new System.Windows.Forms.TextBox();
-        textBoxRu = new System.Windows.Forms.TextBox();
-        label4 = new System.Windows.Forms.Label();
-        textBoxNpcName = new System.Windows.Forms.TextBox();
         buttonPageFirst = new System.Windows.Forms.Button();
         buttonPageDialog = new System.Windows.Forms.Button();
         buttonDeleteDialog = new System.Windows.Forms.Button();
+        label20 = new System.Windows.Forms.Label();
+        textBoxAudio = new System.Windows.Forms.TextBox();
         pagePreference.SuspendLayout();
         pageSteps.SuspendLayout();
+        dialogStepManage.SuspendLayout();
         dialogStepPreference.SuspendLayout();
         pageChoice.SuspendLayout();
-        dialogStepManage.SuspendLayout();
         SuspendLayout();
         // 
         // buttonExit
@@ -163,9 +165,9 @@ partial class EditorForm
         // 
         pagePreference.Controls.Add(label19);
         pagePreference.Controls.Add(textBoxDelay);
-        pagePreference.Controls.Add(checkMoreRead);
         pagePreference.Controls.Add(checkCanInter);
         pagePreference.Controls.Add(checkCanMove);
+        pagePreference.Controls.Add(checkMoreRead);
         pagePreference.Location = new System.Drawing.Point(65, 85);
         pagePreference.Name = "pagePreference";
         pagePreference.Size = new System.Drawing.Size(697, 306);
@@ -190,16 +192,6 @@ partial class EditorForm
         textBoxDelay.TabIndex = 18;
         textBoxDelay.TextChanged += textBoxDelay_TextChanged;
         // 
-        // checkMoreRead
-        // 
-        checkMoreRead.Location = new System.Drawing.Point(17, 85);
-        checkMoreRead.Name = "checkMoreRead";
-        checkMoreRead.Size = new System.Drawing.Size(361, 24);
-        checkMoreRead.TabIndex = 0;
-        checkMoreRead.Text = "Читать несколько раз";
-        checkMoreRead.UseVisualStyleBackColor = true;
-        checkMoreRead.CheckedChanged += checkMoreRead_CheckedChanged;
-        // 
         // checkCanInter
         // 
         checkCanInter.Location = new System.Drawing.Point(17, 55);
@@ -219,6 +211,16 @@ partial class EditorForm
         checkCanMove.Text = "Можно двигаться";
         checkCanMove.UseVisualStyleBackColor = true;
         checkCanMove.CheckedChanged += checkCanMove_CheckedChanged;
+        // 
+        // checkMoreRead
+        // 
+        checkMoreRead.Location = new System.Drawing.Point(17, 85);
+        checkMoreRead.Name = "checkMoreRead";
+        checkMoreRead.Size = new System.Drawing.Size(361, 24);
+        checkMoreRead.TabIndex = 0;
+        checkMoreRead.Text = "Читать несколько раз";
+        checkMoreRead.UseVisualStyleBackColor = true;
+        checkMoreRead.CheckedChanged += checkMoreRead_CheckedChanged;
         // 
         // pageSteps
         // 
@@ -240,9 +242,9 @@ partial class EditorForm
         pageSteps.Controls.Add(comboBoxSelectedStep);
         pageSteps.Controls.Add(buttonAddBranch);
         pageSteps.Controls.Add(comboBoxSelectedBranch);
+        pageSteps.Controls.Add(dialogStepManage);
         pageSteps.Controls.Add(dialogStepPreference);
         pageSteps.Controls.Add(pageChoice);
-        pageSteps.Controls.Add(dialogStepManage);
         pageSteps.Location = new System.Drawing.Point(65, 85);
         pageSteps.Name = "pageSteps";
         pageSteps.Size = new System.Drawing.Size(697, 306);
@@ -419,6 +421,109 @@ partial class EditorForm
         comboBoxSelectedBranch.Size = new System.Drawing.Size(113, 23);
         comboBoxSelectedBranch.TabIndex = 1;
         comboBoxSelectedBranch.SelectedIndexChanged += comboBoxSelectedBranch_SelectedIndexChanged;
+        // 
+        // dialogStepManage
+        // 
+        dialogStepManage.Controls.Add(label20);
+        dialogStepManage.Controls.Add(textBoxAudio);
+        dialogStepManage.Controls.Add(label13);
+        dialogStepManage.Controls.Add(textBoxBigPicture);
+        dialogStepManage.Controls.Add(comboBoxMood);
+        dialogStepManage.Controls.Add(label3);
+        dialogStepManage.Controls.Add(label6);
+        dialogStepManage.Controls.Add(label5);
+        dialogStepManage.Controls.Add(textBoxEn);
+        dialogStepManage.Controls.Add(textBoxRu);
+        dialogStepManage.Controls.Add(label4);
+        dialogStepManage.Controls.Add(textBoxNpcName);
+        dialogStepManage.Location = new System.Drawing.Point(10, 67);
+        dialogStepManage.Name = "dialogStepManage";
+        dialogStepManage.Size = new System.Drawing.Size(670, 203);
+        dialogStepManage.TabIndex = 6;
+        dialogStepManage.TabStop = false;
+        // 
+        // label13
+        // 
+        label13.Location = new System.Drawing.Point(8, 175);
+        label13.Name = "label13";
+        label13.Size = new System.Drawing.Size(68, 22);
+        label13.TabIndex = 10;
+        label13.Text = "Big picture";
+        label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        // 
+        // textBoxBigPicture
+        // 
+        textBoxBigPicture.Location = new System.Drawing.Point(82, 174);
+        textBoxBigPicture.Name = "textBoxBigPicture";
+        textBoxBigPicture.Size = new System.Drawing.Size(147, 23);
+        textBoxBigPicture.TabIndex = 9;
+        // 
+        // comboBoxMood
+        // 
+        comboBoxMood.FormattingEnabled = true;
+        comboBoxMood.Location = new System.Drawing.Point(423, 21);
+        comboBoxMood.Name = "comboBoxMood";
+        comboBoxMood.Size = new System.Drawing.Size(144, 23);
+        comboBoxMood.TabIndex = 8;
+        // 
+        // label3
+        // 
+        label3.Location = new System.Drawing.Point(349, 20);
+        label3.Name = "label3";
+        label3.Size = new System.Drawing.Size(68, 22);
+        label3.TabIndex = 7;
+        label3.Text = "Mood";
+        label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        // 
+        // label6
+        // 
+        label6.Location = new System.Drawing.Point(323, 56);
+        label6.Name = "label6";
+        label6.Size = new System.Drawing.Size(31, 21);
+        label6.TabIndex = 5;
+        label6.Text = "En";
+        // 
+        // label5
+        // 
+        label5.Location = new System.Drawing.Point(44, 56);
+        label5.Name = "label5";
+        label5.Size = new System.Drawing.Size(31, 21);
+        label5.TabIndex = 4;
+        label5.Text = "Ru";
+        // 
+        // textBoxEn
+        // 
+        textBoxEn.Location = new System.Drawing.Point(360, 51);
+        textBoxEn.Multiline = true;
+        textBoxEn.Name = "textBoxEn";
+        textBoxEn.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+        textBoxEn.Size = new System.Drawing.Size(227, 114);
+        textBoxEn.TabIndex = 3;
+        // 
+        // textBoxRu
+        // 
+        textBoxRu.Location = new System.Drawing.Point(81, 56);
+        textBoxRu.Multiline = true;
+        textBoxRu.Name = "textBoxRu";
+        textBoxRu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+        textBoxRu.Size = new System.Drawing.Size(227, 114);
+        textBoxRu.TabIndex = 2;
+        // 
+        // label4
+        // 
+        label4.Location = new System.Drawing.Point(23, 23);
+        label4.Name = "label4";
+        label4.Size = new System.Drawing.Size(68, 22);
+        label4.TabIndex = 1;
+        label4.Text = "Npc name";
+        label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        // 
+        // textBoxNpcName
+        // 
+        textBoxNpcName.Location = new System.Drawing.Point(97, 22);
+        textBoxNpcName.Name = "textBoxNpcName";
+        textBoxNpcName.Size = new System.Drawing.Size(147, 23);
+        textBoxNpcName.TabIndex = 0;
         // 
         // dialogStepPreference
         // 
@@ -664,109 +769,6 @@ partial class EditorForm
         textBoxQuestionRu.Size = new System.Drawing.Size(147, 87);
         textBoxQuestionRu.TabIndex = 1;
         // 
-        // dialogStepManage
-        // 
-        dialogStepManage.Controls.Add(label13);
-        dialogStepManage.Controls.Add(textBoxBigPicture);
-        dialogStepManage.Controls.Add(comboBoxMood);
-        dialogStepManage.Controls.Add(label3);
-        dialogStepManage.Controls.Add(label6);
-        dialogStepManage.Controls.Add(label5);
-        dialogStepManage.Controls.Add(textBoxEn);
-        dialogStepManage.Controls.Add(textBoxRu);
-        dialogStepManage.Controls.Add(label4);
-        dialogStepManage.Controls.Add(textBoxNpcName);
-        dialogStepManage.Location = new System.Drawing.Point(10, 67);
-        dialogStepManage.Name = "dialogStepManage";
-        dialogStepManage.Size = new System.Drawing.Size(670, 203);
-        dialogStepManage.TabIndex = 6;
-        dialogStepManage.TabStop = false;
-        // 
-        // label13
-        // 
-        label13.Location = new System.Drawing.Point(8, 175);
-        label13.Name = "label13";
-        label13.Size = new System.Drawing.Size(68, 22);
-        label13.TabIndex = 10;
-        label13.Text = "Big picture";
-        label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-        // 
-        // textBoxBigPicture
-        // 
-        textBoxBigPicture.Location = new System.Drawing.Point(82, 174);
-        textBoxBigPicture.Name = "textBoxBigPicture";
-        textBoxBigPicture.Size = new System.Drawing.Size(147, 23);
-        textBoxBigPicture.TabIndex = 9;
-        // 
-        // comboBoxMood
-        // 
-        comboBoxMood.FormattingEnabled = true;
-        comboBoxMood.Location = new System.Drawing.Point(423, 21);
-        comboBoxMood.Name = "comboBoxMood";
-        comboBoxMood.Size = new System.Drawing.Size(144, 23);
-        comboBoxMood.TabIndex = 8;
-        // 
-        // label3
-        // 
-        label3.Location = new System.Drawing.Point(349, 20);
-        label3.Name = "label3";
-        label3.Size = new System.Drawing.Size(68, 22);
-        label3.TabIndex = 7;
-        label3.Text = "Mood";
-        label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-        // 
-        // label6
-        // 
-        label6.Location = new System.Drawing.Point(323, 56);
-        label6.Name = "label6";
-        label6.Size = new System.Drawing.Size(31, 21);
-        label6.TabIndex = 5;
-        label6.Text = "En";
-        // 
-        // label5
-        // 
-        label5.Location = new System.Drawing.Point(44, 56);
-        label5.Name = "label5";
-        label5.Size = new System.Drawing.Size(31, 21);
-        label5.TabIndex = 4;
-        label5.Text = "Ru";
-        // 
-        // textBoxEn
-        // 
-        textBoxEn.Location = new System.Drawing.Point(360, 56);
-        textBoxEn.Multiline = true;
-        textBoxEn.Name = "textBoxEn";
-        textBoxEn.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-        textBoxEn.ShortcutsEnabled = false;
-        textBoxEn.Size = new System.Drawing.Size(227, 114);
-        textBoxEn.TabIndex = 3;
-        // 
-        // textBoxRu
-        // 
-        textBoxRu.Location = new System.Drawing.Point(81, 56);
-        textBoxRu.Multiline = true;
-        textBoxRu.Name = "textBoxRu";
-        textBoxRu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-        textBoxRu.ShortcutsEnabled = false;
-        textBoxRu.Size = new System.Drawing.Size(227, 114);
-        textBoxRu.TabIndex = 2;
-        // 
-        // label4
-        // 
-        label4.Location = new System.Drawing.Point(23, 23);
-        label4.Name = "label4";
-        label4.Size = new System.Drawing.Size(68, 22);
-        label4.TabIndex = 1;
-        label4.Text = "Npc name";
-        label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-        // 
-        // textBoxNpcName
-        // 
-        textBoxNpcName.Location = new System.Drawing.Point(97, 22);
-        textBoxNpcName.Name = "textBoxNpcName";
-        textBoxNpcName.Size = new System.Drawing.Size(147, 23);
-        textBoxNpcName.TabIndex = 0;
-        // 
         // buttonPageFirst
         // 
         buttonPageFirst.BackColor = System.Drawing.Color.FromArgb(((int)((byte)224)), ((int)((byte)224)), ((int)((byte)224)));
@@ -807,6 +809,22 @@ partial class EditorForm
         buttonDeleteDialog.UseVisualStyleBackColor = false;
         buttonDeleteDialog.Click += buttonDeleteDialog_Click;
         // 
+        // label20
+        // 
+        label20.Location = new System.Drawing.Point(364, 172);
+        label20.Name = "label20";
+        label20.Size = new System.Drawing.Size(68, 22);
+        label20.TabIndex = 12;
+        label20.Text = "Audio";
+        label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        // 
+        // textBoxAudio
+        // 
+        textBoxAudio.Location = new System.Drawing.Point(438, 171);
+        textBoxAudio.Name = "textBoxAudio";
+        textBoxAudio.Size = new System.Drawing.Size(147, 23);
+        textBoxAudio.TabIndex = 11;
+        // 
         // EditorForm
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -821,21 +839,24 @@ partial class EditorForm
         Controls.Add(ButtonSave);
         Controls.Add(labelDialog);
         Controls.Add(buttonExit);
-        Controls.Add(pagePreference);
         Controls.Add(pageSteps);
+        Controls.Add(pagePreference);
         Location = new System.Drawing.Point(15, 15);
         Text = "EditorForm";
         pagePreference.ResumeLayout(false);
         pagePreference.PerformLayout();
         pageSteps.ResumeLayout(false);
+        dialogStepManage.ResumeLayout(false);
+        dialogStepManage.PerformLayout();
         dialogStepPreference.ResumeLayout(false);
         dialogStepPreference.PerformLayout();
         pageChoice.ResumeLayout(false);
         pageChoice.PerformLayout();
-        dialogStepManage.ResumeLayout(false);
-        dialogStepManage.PerformLayout();
         ResumeLayout(false);
     }
+
+    private System.Windows.Forms.Label label20;
+    private System.Windows.Forms.TextBox textBoxAudio;
 
     private System.Windows.Forms.TextBox textBoxDelay;
 

@@ -131,6 +131,7 @@ namespace DialogEditor
             _selectedStep.dialogText = new LanguageSetting(textBoxRu.Text, textBoxEn.Text);
             _selectedStep.iconMoodSelected = (IconMood)comboBoxMood.SelectedIndex;
             _selectedStep.bigPictureName = textBoxBigPicture.Text;
+            _selectedStep.stepSpeech = textBoxAudio.Text;
             _selectedStep.activateCutsceneStep = int.Parse(textBoxCutscene.Text);
             if (_selectedStep.fastChanges == null)
                 _selectedStep.fastChanges = new FastChangesController();
@@ -415,6 +416,7 @@ namespace DialogEditor
             textBoxRu.Text = _selectedStep.dialogText.ru;
             textBoxEn.Text = _selectedStep.dialogText.en;
             textBoxBigPicture.Text = _selectedStep.bigPictureName;
+            textBoxAudio.Text = _selectedStep.stepSpeech;
             textBoxCutscene.Text = _selectedStep.activateCutsceneStep.ToString();
             if (_selectedStep.fastChanges != null)
             {
